@@ -18,7 +18,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    command: /bin/bash
+    command: sleep infinity
     volumes:
       - .:/app
       - bundle_data:/usr/local/bundle
@@ -38,18 +38,6 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    tty: true
-    stdin_open: true
-    develop:
-      watch:
-        - path: .
-          action: sync
-          target: /app
-          ignore:
-            - node_modules
-            - tmp
-            - log
-            - vendor
 
   chrome:
     image: selenium/standalone-chromium
