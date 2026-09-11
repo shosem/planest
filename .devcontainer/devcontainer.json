@@ -1,0 +1,18 @@
+{
+  "name": "Planest Development",
+  "dockerComposeFile": "../compose.yml",
+  "service": "web",
+  "workspaceFolder": "/app",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rebornix.ruby",
+        "shopify.theme-check-vscode",
+        "ms-vscode-remote.remote-containers"
+      ]
+    }
+  },
+  "forwardPorts": [3000, 5432],
+  "postCreateCommand": "bundle install",
+  "overrideCommand": false
+}
