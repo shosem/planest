@@ -28,55 +28,7 @@
     <% end %>
 
     <div class="tab-content p-4">
-      <form class="flex flex-col gap-2">
-        <%= render "pages/demo-static/label_wrapper_demo", label: "名前", id: "name" do |id| %>
-          <input
-            id="<%= id %>"
-            autocomplete="name"
-            type="text"
-            placeholder="山田 太郎"
-            name="name"
-            class="input w-full"
-          >
-        <% end %>
-
-        <%= render "pages/demo-static/label_wrapper_demo", label: "メールアドレス", id: "email" do |id| %>
-          <input
-            id="<%= id %>"
-            autocomplete="email"
-            type="email"
-            placeholder="you@example.com"
-            name="email"
-            class="input w-full"
-          >
-        <% end %>
-
-        <%= render "pages/demo-static/label_wrapper_demo", label: "パスワード", id: "password" do |id| %>
-          <input
-            type="password"
-            placeholder="*********"
-            id="<%= id %>"
-            autocomplete="current-password"
-            name="password"
-            class="input w-full"
-          >
-        <% end %>
-
-        <%= render "pages/demo-static/label_wrapper_demo", label: "パスワード確認", id: "password_confirmation" do |id| %>
-          <input
-            type="password"
-            placeholder="*********"
-            id="<%= id %>"
-            autocomplete="current-password"
-            name="password_confirmation"
-            class="input w-full"
-          >
-        <% end %>
-
-        <button type="submit" class="btn btn-primary btn-block">
-          アカウント作成
-        </button>
-      </form>
+      <%= render "pages/demo-static/auth_form_demo", is_sign_up: true %>
     </div>
   </div>
 </main>
