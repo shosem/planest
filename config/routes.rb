@@ -12,4 +12,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  get "auth-demo", to: "pages#auth_demo", as: :auth_demo
 end
