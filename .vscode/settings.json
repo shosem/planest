@@ -3,8 +3,6 @@
 	"languageServerHerb.linter.enabled": true,
 	"languageServerHerb.formatter.enabled": true,
 	// "editor.formatOnSave": true,
-	// "editor.formatOnType": false,
-	// "editor.formatOnPaste": false,
 	"[erb]": {
 		"editor.defaultFormatter": "marcoroth.herb-lsp"
 	},
