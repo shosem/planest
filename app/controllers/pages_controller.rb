@@ -3,5 +3,6 @@ class PagesController < ApplicationController
   end
 
   def auth_demo
+    render "pages/demo-static/auth_demo"
   end
 end
