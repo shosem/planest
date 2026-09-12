@@ -1,3 +1,75 @@
-<div>
-  <h1 class="font-bold text-4xl">認証画面デモ</h1>
-</div>
+<main
+  class="
+    min-h-screen flex flex-col gap-1 items-center justify-center w-sm
+    ml-auto mr-auto
+  "
+>
+  <div class="flex flex-col items-center">
+    <h1 class="font-bold">アプリタイトル</h1>
+  </div>
+
+  <div class="tabs tabs-border p0 w-full bg-base-200 rounded-xl">
+    <a href="#tab1" role="tab" class="tab flex-1 px-0">ログイン</a>
+    <a href="#tab2" role="tab" class="tab flex-1 px-0 tab-active">新規登録</a>
+
+    <div class="tab-content p-4">
+      <form class="flex flex-col gap-2">
+        <div class="flex flex-col gap-1">
+          <label for="name" class="label">名前</label>
+
+          <input
+            id="name"
+            autocomplete="name"
+            type="text"
+            placeholder="山田 太郎"
+            name="name"
+            class="input w-full"
+          >
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <label for="email" class="label">メールアドレス</label>
+
+          <input
+            id="email"
+            autocomplete="email"
+            type="email"
+            placeholder="you@example.com"
+            name="email"
+            class="input w-full"
+          >
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <label for="password" class="label">パスワード</label>
+
+          <input
+            type="password"
+            placeholder="*********"
+            id="password"
+            autocomplete="current-password"
+            name="password"
+            class="input w-full"
+          >
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <label for="password_confirmation" class="label">パスワード確認</label>
+
+          <input
+            type="password"
+            placeholder="*********"
+            id="password_confirmation"
+            autocomplete="current-password"
+            name="password_confirmation"
+            class="input w-full"
+          >
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">
+          アカウント作成
+        </button>
+      </form>
+    </div>
+  </div>
+</main>
