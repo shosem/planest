@@ -9,8 +9,23 @@
   </div>
 
   <div class="tabs tabs-border p0 w-full bg-base-200 rounded-xl">
-    <a href="#tab1" role="tab" class="tab flex-1 px-0">ログイン</a>
-    <a href="#tab2" role="tab" class="tab flex-1 px-0 tab-active">新規登録</a>
+    <% [{
+      title: "ログイン",
+      href: "#tab1",
+      active: false
+    }, {
+      title: "新規登録",
+      href: "#tab2",
+      active: true
+    }].each do |tab| %>
+      <a
+        href="<%= tab[:href] %>"
+        role="tab"
+        class="tab flex-1 px-0 <%= 'tab-active' if tab[:active] %>"
+      >
+        <%= tab[:title] %>
+      </a>
+    <% end %>
 
     <div class="tab-content p-4">
       <form class="flex flex-col gap-2">
