@@ -1,0 +1,60 @@
+<%# locals: (mode:, active:, title:, tab_path:, form_url:, submit:) %>
+
+<%= link_to title, tab_path,
+        aria: { current: ("page" if active) },
+        class: "tab flex-1 px-0" %>
+
+<%# activeの場合のみ表示する。分岐しないと、非アクティブは表示されないがDOMに存在してしまう %>
+
+<% if active %>
+  <div class="tab-content p-4">
+    <%= form_with model: resource, as: resource_name, url: form_url,
+                    class: "flex flex-col gap-2" do |f| %>
+      <%= render "users/shared/error_messages", resource: resource %>
+
+      <% if mode == :sign_up %>
+        <div class="flex flex-col gap-1">
+          <%= f.label :name, class: "label" %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name",
+                  placeholder: "山田太郎", class: "input w-full" %>
+        </div>
+      <% end %>
+
+      <div class="flex flex-col gap-1">
+        <%= f.label :email, class: "label" %>
+        <%= f.email_field :email, autofocus: mode == :sign_in,
+                autocomplete: "email", placeholder: "you@example.com",
+                class: "input w-full" %>
+      </div>
+
+      <div class="flex flex-col gap-1">
+        <div class="label">
+          <%= f.label :password %>
+          <% if mode == :sign_up %>
+            <span>(6文字以上)</span>
+          <% end %>
+        </div>
+        <%= f.password_field :password,
+                autocomplete: mode == :sign_in ? "current-password" : "new-password",
+                placeholder: "*********", class: "input w-full" %>
+      </div>
+
+      <% if mode == :sign_up %>
+        <div class="flex flex-col gap-1">
+          <%= f.label :password_confirmation, class: "label" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password",
+                  placeholder: "*********", class: "input w-full" %>
+        </div>
+      <% end %>
+
+      <% if mode == :sign_in %>
+        <div class="label cursor-pointer justify-start gap-2">
+          <%= f.check_box :remember_me, class: "checkbox checkbox-sm" %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+
+      <%= f.submit submit, class: "btn btn-primary btn-block mt-2" %>
+    <% end %>
+  </div>
+<% end %>
