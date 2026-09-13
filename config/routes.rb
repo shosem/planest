@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-        registrations: 'users/registrations'
+        registrations: "users/registrations"
       }
   get "pages/home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
