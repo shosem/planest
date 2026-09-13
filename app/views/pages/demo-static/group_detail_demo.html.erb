@@ -18,9 +18,31 @@
     </div>
 
     <div class="p-3 flex flex-col flex-1 gap-1.5 border-t border-neutral border-1">
+      <% add_button = capture do %>
+        <button
+          class="btn btn-circle btn-xs text-base-content/60 p-0 text-xs"
+          onClick="console.log('add group')"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 4.5v15m7.5-7.5h-15"
+            />
+          </svg>
+        </button>
+      <% end %>
+
       <%= render "pages/demo-static/group_list_sec_demo", 
         title: "自分のグループ", 
-        end_adornment: nil,
+        end_adornment: add_button,
         groups: [
           {
             name: "Item 1",
@@ -38,26 +60,6 @@
             href: "#"
           }
         ] %>
-
-      <!-- <button -->
-      <!-- class="btn btn-circle btn-xs text-base-content/60 p-0 text-xs" -->
-      <!-- onClick="console.log('add group')" -->
-      <!-- > -->
-      <!-- <svg -->
-      <!-- xmlns="http://www.w3.org/2000/svg" -->
-      <!-- fill="currentColor" -->
-      <!-- viewBox="0 0 24 24" -->
-      <!-- stroke-width="1.5" -->
-      <!-- stroke="currentColor" -->
-      <!-- class="size-6" -->
-      <!-- > -->
-      <!-- <path -->
-      <!-- stroke-linecap="round" -->
-      <!-- stroke-linejoin="round" -->
-      <!-- d="M12 4.5v15m7.5-7.5h-15" -->
-      <!--  -->
-      <!-- </svg> -->
-      <!-- </button> -->
     </div>
 
     <div class="p-3 flex items-center gap-2.5 border-t border-neutral border-1">
