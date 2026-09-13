@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get "auth-demo", to: "pages#auth_demo", as: :auth_demo
+  get "group-detail-demo", to: "pages#group_detail_demo", as: :group_detail_demo
 end
