@@ -1,0 +1,34 @@
+<main
+  class="
+    min-h-screen flex flex-col gap-1 items-center justify-center w-sm
+    ml-auto mr-auto
+  "
+>
+  <div class="flex flex-col items-center">
+    <h1 class="font-bold">アプリタイトル</h1>
+  </div>
+
+  <div class="tabs tabs-border p0 w-full bg-base-200 rounded-xl">
+    <% [{
+      title: "ログイン",
+      href: "#tab1",
+      active: false
+    }, {
+      title: "新規登録",
+      href: "#tab2",
+      active: true
+    }].each do |tab| %>
+      <a
+        href="<%= tab[:href] %>"
+        role="tab"
+        class="tab flex-1 px-0 <%= 'tab-active' if tab[:active] %>"
+      >
+        <%= tab[:title] %>
+      </a>
+    <% end %>
+
+    <div class="tab-content p-4">
+      <%= render "pages/demo-static/auth_form_demo", is_sign_up: true %>
+    </div>
+  </div>
+</main>
