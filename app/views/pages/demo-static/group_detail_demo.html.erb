@@ -4,11 +4,43 @@
       アプリタイトル
     </div>
 
-    <div class="p-3 flex flex-col flex-1 gap-1">
-      アプリタイトル
+    <div class="p-3 flex flex-col gap-1 border-t border-neutral border-1">
+      <div class="flex items-center justify-between">
+        <h2 class="font-bold text-base-content/60 text-xs flex-1">
+          自分のグループ
+        </h2>
+      </div>
     </div>
 
-    <div class="p-3 flex items-center gap-2.5">
+    <div class="p-3 flex flex-col flex-1 gap-1 border-t border-neutral border-1">
+      <div class="flex items-center justify-between">
+        <h2 class="font-bold text-base-content/60 text-xs flex-1">
+          グループ
+        </h2>
+
+        <button
+          class="btn btn-circle btn-xs text-base-content/60 p-0 text-xs"
+          onClick="console.log('add group')"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 4.5v15m7.5-7.5h-15"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="p-3 flex items-center gap-2.5 border-t border-neutral border-1">
       <div class="avatar avatar-placeholder">
         <div class="bg-neutral text-neutral-content w-8 rounded-full">
           <span>SY</span>
@@ -21,7 +53,7 @@
       </div>
 
       <button
-        class="btn btn-circle text-base-content/60 p-0"
+        class="btn btn-circle btn-xs text-base-content/60 p-0 text-xs"
         onClick="console.log('logout')"
       >
         <svg
@@ -42,5 +74,9 @@
     </div>
   </aside>
 
-  <span>hello world</span>
+  <div class="divider divider-horizontal divider-neutral m-0 w-0"></div>
+
+  <div class="flex-1">
+    <span>hello world</span>
+  </div>
 </div>
