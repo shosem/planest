@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_14_015708) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_14_084957) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "group_members", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.bigint "group_id", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["group_id"], name: "index_group_members_on_group_id"
+    t.index ["user_id", "group_id"], name: "index_group_members_on_user_id_and_group_id", unique: true
+  end
 
   create_table "groups", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -22,7 +31,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_14_015708) do
     t.bigint "owner_id", null: false
     t.datetime "updated_at", null: false
     t.index ["invite_code"], name: "index_groups_on_invite_code", unique: true, where: "(invite_code IS NOT NULL)"
-    t.index ["owner_id"], name: "index_groups_on_owner_id"
+    t.index ["owner_id"], name: "index_groups_on_owner_id", unique: true, where: "(is_personal = true)"
     t.check_constraint "is_personal = true AND invite_code IS NULL OR is_personal = false AND invite_code IS NOT NULL", name: "groups_invite_code_presence"
   end
 
@@ -36,5 +45,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_14_015708) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "group_members", "groups"
+  add_foreign_key "group_members", "users"
   add_foreign_key "groups", "users", column: "owner_id"
 end
