@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_12_143143) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_14_015708) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "groups", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "invite_code"
+    t.boolean "is_personal", default: false, null: false
+    t.string "name", null: false
+    t.bigint "owner_id"
+    t.datetime "updated_at", null: false
+    t.index ["invite_code"], name: "index_groups_on_invite_code", unique: true, where: "(invite_code IS NOT NULL)"
+    t.index ["owner_id"], name: "index_groups_on_owner_id"
+    t.check_constraint "is_personal = true AND invite_code IS NULL OR is_personal = false AND invite_code IS NOT NULL", name: "groups_invite_code_presence"
+  end
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -23,4 +35,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_12_143143) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
+
+  add_foreign_key "groups", "users", column: "owner_id"
 end
