@@ -1,0 +1,30 @@
+<%# locals: (mode:) %>
+
+<main
+  class="
+    min-h-screen flex flex-col gap-1 items-center justify-center w-sm
+    ml-auto mr-auto
+  "
+>
+  <div class="flex flex-col items-center">
+    <h1 class="text-base-content font-bold">Planest</h1>
+  </div>
+
+  <div class="tabs tabs-border p-0 w-full bg-base-200 rounded-xl">
+    <%= render "users/shared/auth_tab",
+            mode: :sign_in,
+            active: mode == :sign_in,
+            title: "ログイン",
+            tab_path: new_user_session_path,
+            form_url: user_session_path,
+            submit: "ログイン" %>
+
+    <%= render "users/shared/auth_tab",
+            mode: :sign_up,
+            active: mode == :sign_up,
+            title: "新規登録",
+            tab_path: new_user_registration_path,
+            form_url: user_registration_path,
+            submit: "アカウント作成" %>
+  </div>
+</main>
