@@ -1,0 +1,102 @@
+<div class="flex">
+  <aside class="h-screen w-55 bg-base-200 flex flex-col border-r border-neutral">
+    <div class="p-3">
+      <h1>アプリタイトル</h1>
+    </div>
+
+    <div class="p-3 flex flex-col gap-1.5 border-t border-neutral">
+      <%= render "groups/_demo/group_list_sec_demo", 
+        title: "自分のグループ", 
+        groups: [
+          {
+            name: "ユーザー名",
+            active: false,
+            href: "#"
+          },
+        ] %>
+    </div>
+
+    <div class="p-3 flex flex-col flex-1 gap-1.5 border-t border-neutral">
+      <% add_button = capture do %>
+        <button
+          class="btn btn-circle btn-xs text-base-content/60 p-0 text-xs"
+          onClick="console.log('add group')"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 4.5v15m7.5-7.5h-15"
+            />
+          </svg>
+        </button>
+      <% end %>
+
+      <%= render "groups/_demo/group_list_sec_demo", 
+        title: "自分のグループ", 
+        end_adornment: add_button,
+        groups: [
+          {
+            name: "Item 1",
+            active: true,
+            href: "#"
+          }, 
+          {
+            name: "Item 2",
+            active: false,
+            href: "#"
+          }, 
+          {
+            name: "Item 3",
+            active: false,
+            href: "#"
+          }
+        ] %>
+    </div>
+
+    <div class="p-3 flex items-center gap-2.5 border-t border-neutral">
+      <div class="avatar avatar-placeholder">
+        <div class="bg-neutral text-neutral-content w-8 rounded-full">
+          <span>SY</span>
+        </div>
+      </div>
+
+      <div class="flex flex-col flex-1">
+        <span class="font-bold text-sm">ユーザー名</span>
+        <span class="text-sm text-base-content/60 text-xs">test@example.com</span>
+      </div>
+
+      <button
+        class="btn btn-circle btn-xs text-base-content/60 p-0 text-xs"
+        onClick="console.log('logout')"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9"
+          />
+        </svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ここは後でyieldにし、ファイル自体もsidebar-wrapperみたいな名称にする -->
+  <div class="flex-1 p-3">
+    <span>hello tasks</span>
+  </div>
+</div>
