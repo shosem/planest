@@ -7,6 +7,6 @@ class PagesController < ApplicationController
   end
 
   def group_detail_demo
-    render "pages/demo-static/group_detail_demo"
+    render "groups/_demo/group_detail_demo"
   end
 end
