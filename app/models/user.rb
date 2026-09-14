@@ -10,9 +10,17 @@ class User < ApplicationRecord
   # inverse_ofは双方向関連付け
   has_many :owned_groups, class_name: "Group", foreign_key: :owner_id, inverse_of: :owner
   has_many :group_members, dependent: :destroy
-  has_many :groups, through: :group_members
+  has_many :groups, -> { order(:created_at) }, through: :group_members
 
   after_create :generate_personal_group
+
+  def personal_group
+    groups.detect(&:is_personal?)
+  end
+
+  def shared_groups
+    groups.reject(&:is_personal?)
+  end
 
   private
   def generate_personal_group

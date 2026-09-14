@@ -11,6 +11,10 @@ class Group < ApplicationRecord
   # after_createだとinvite_codeのバリデーションがうまく作用しないため、バリデーション前にinvite_code作成
   before_validation :generate_invite_code, on: :create, unless: :is_personal?
 
+  # スコープ
+  scope :shared, -> { where(is_personal: false) }
+  scope :inviteable, -> { shared.where.not(invite_code: nil) }
+
   private
 
   def generate_invite_code
