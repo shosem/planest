@@ -11,4 +11,11 @@ class User < ApplicationRecord
   has_many :owned_groups, class_name: "Group", foreign_key: :owner_id, inverse_of: :owner
   has_many :group_members, dependent: :destroy
   has_many :groups, through: :group_members
+
+  after_create :generate_personal_group
+
+  private
+  def generate_personal_group
+    self.groups.create!(name: name, owner: self, is_personal: true)
+  end
 end
