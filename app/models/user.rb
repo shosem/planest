@@ -4,4 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :rememberable, :validatable
   validates :name, presence: true, length: { maximum: 12 }
+
+  # user.owned_groupsでオーナーのグループを辿れる。
+  # dependentでuser削除にグループも削除するかは検討中。
+  # inverse_ofは双方向関連付け
+  has_many :owned_groups, class_name: "Group", foreign_key: :owner_id, inverse_of: :owner
 end

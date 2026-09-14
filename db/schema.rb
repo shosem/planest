@@ -19,7 +19,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_14_015708) do
     t.string "invite_code"
     t.boolean "is_personal", default: false, null: false
     t.string "name", null: false
-    t.bigint "owner_id"
+    t.bigint "owner_id", null: false
     t.datetime "updated_at", null: false
     t.index ["invite_code"], name: "index_groups_on_invite_code", unique: true, where: "(invite_code IS NOT NULL)"
     t.index ["owner_id"], name: "index_groups_on_owner_id"
