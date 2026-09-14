@@ -1,10 +1,10 @@
 <div class="flex">
-  <aside class="h-screen w-55 bg-base-200 flex flex-col">
+  <aside class="h-screen w-55 bg-base-200 flex flex-col border-r border-neutral">
     <div class="p-3">
       <h1>アプリタイトル</h1>
     </div>
 
-    <div class="p-3 flex flex-col gap-1.5 border-t border-neutral border-1">
+    <div class="p-3 flex flex-col gap-1.5 border-t border-neutral">
       <%= render "groups/_demo/group_list_sec_demo", 
         title: "自分のグループ", 
         groups: [
@@ -16,7 +16,7 @@
         ] %>
     </div>
 
-    <div class="p-3 flex flex-col flex-1 gap-1.5 border-t border-neutral border-1">
+    <div class="p-3 flex flex-col flex-1 gap-1.5 border-t border-neutral">
       <% add_button = capture do %>
         <button
           class="btn btn-circle btn-xs text-base-content/60 p-0 text-xs"
@@ -61,7 +61,7 @@
         ] %>
     </div>
 
-    <div class="p-3 flex items-center gap-2.5 border-t border-neutral border-1">
+    <div class="p-3 flex items-center gap-2.5 border-t border-neutral">
       <div class="avatar avatar-placeholder">
         <div class="bg-neutral text-neutral-content w-8 rounded-full">
           <span>SY</span>
@@ -94,8 +94,6 @@
       </button>
     </div>
   </aside>
-
-  <div class="divider divider-horizontal divider-neutral m-0 w-0"></div>
 
   <div class="flex-1 p-3">
     <span>hello tasks</span>
