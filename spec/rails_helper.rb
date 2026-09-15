@@ -50,6 +50,9 @@ RSpec.configure do |config|
   # create(:user) のように FactoryBot のメソッドを FactoryBot. なしで書けるようにする
   config.include FactoryBot::Syntax::Methods
 
+  # deviseのメソッドを使用できる
+  config.include Devise::Test::IntegrationHelpers
+
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 
