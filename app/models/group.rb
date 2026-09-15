@@ -13,7 +13,7 @@ class Group < ApplicationRecord
 
   # スコープ
   scope :shared, -> { where(is_personal: false) }
-  scope :inviteable, -> { shared.where.not(invite_code: nil) }
+  scope :invitable, -> { shared.where.not(invite_code: nil) }
 
   private
 
