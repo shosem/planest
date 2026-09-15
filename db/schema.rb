@@ -31,7 +31,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_14_084957) do
     t.bigint "owner_id", null: false
     t.datetime "updated_at", null: false
     t.index ["invite_code"], name: "index_groups_on_invite_code", unique: true, where: "(invite_code IS NOT NULL)"
-    t.index ["owner_id"], name: "index_groups_on_owner_id", unique: true, where: "(is_personal = true)"
+    t.index ["owner_id"], name: "index_groups_on_owner_id"
+    t.index ["owner_id"], name: "index_groups_on_owner_id_unique_personal", unique: true, where: "(is_personal = true)"
     t.check_constraint "is_personal = true AND invite_code IS NULL OR is_personal = false AND invite_code IS NOT NULL", name: "groups_invite_code_presence"
   end
 

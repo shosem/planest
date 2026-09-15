@@ -9,6 +9,6 @@ class CreateGroupMembers < ActiveRecord::Migration[8.1]
     end
     add_index :group_members, [ :user_id, :group_id ], unique: true
     # 個人グループは1ユーザーにつき1つだけ作成可能
-    add_index :groups, :owner_id, unique: true, where: "is_personal = true"
+    add_index :groups, :owner_id, unique: true, where: "is_personal = true", name: "index_groups_on_owner_id_unique_personal"
   end
 end
