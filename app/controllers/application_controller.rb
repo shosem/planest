@@ -4,4 +4,18 @@ class ApplicationController < ActionController::Base
 
   # Changes to the importmap will invalidate the etag for HTML responses
   stale_when_importmap_changes
+
+  helper_method :current_group
+
+  private
+
+  def current_group
+    return unless user_signed_in?
+    # 一度計算したらここでリターンする
+    return @current_group if defined?(@current_group)
+
+    # ネストされたパスではgroup_id、groupのパスならidで取る
+    id = params[:group_id] || params[:id]
+    @current_group = id && current_user.groups.detect { |group| group.id == id.to_i }
+  end
 end

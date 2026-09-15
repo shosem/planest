@@ -1,0 +1,43 @@
+<%# locals: (title:, groups:, mode:) %>
+
+<div class="flex items-center justify-between">
+  <h2 class="font-bold text-base-content/60 text-xs flex-1">
+    <%= title %>
+  </h2>
+
+  <% if mode == :shared %>
+    <button class="btn btn-circle btn-xs text-base-content/60 p-0 text-xs">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 4.5v15m7.5-7.5h-15"
+        />
+      </svg>
+    </button>
+  <% end %>
+</div>
+
+<ul class="menu bg-base-200 rounded-box w-full p-0">
+  <% if groups.empty? %>
+    <li class="menu-disabled"><span>まだありません</span></li>
+  <% end %>
+
+  <% groups.each do |group| %>
+    <% active = group == current_group %>
+
+    <li>
+      <%= link_to group_path(group), class: "#{"menu-active" if active}" do %>
+        <span class="badge badge-xs <%= active ? 'badge-primary' : 'badge-soft' %>"></span>
+        <%= group.name %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
