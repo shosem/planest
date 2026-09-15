@@ -26,6 +26,20 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% if user_signed_in? %>
+      <%# アプリの基本レイアウト %>
+      <div class="flex">
+        <%= render "shared/sidebar" %>
+
+        <main class="flex-1 p-3">
+          <%= yield %>
+        </main>
+      </div>
+    <% else %>
+      <%# 認証画面 %>
+      <main class="min-h-screen ml-auto mr-auto flex justify-center">
+        <%= yield %>
+      </main>
+    <% end %>
   </body>
 </html>
