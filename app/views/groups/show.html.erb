@@ -1,5 +1,7 @@
 <div>
-    <h1><%= current_group.name %></h1>
-    <p><%= current_group.invite_code %></p>
-    
+    <!-- グループが作成されている場合のみ -->
+    <% if current_group.present? %>
+        <h1><%= current_group.name %></h1>
+        <p><%= current_group.invite_code %></p>
+    <% end %>
 </div>
