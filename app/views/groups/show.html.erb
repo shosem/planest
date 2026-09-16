@@ -2,6 +2,9 @@
     <!-- グループが作成されている場合のみ -->
     <% if current_group.present? %>
         <h1><%= current_group.name %></h1>
-        <p><%= current_group.invite_code %></p>
+        <!-- 招待コードがある時だけ表示 -->
+        <% if current_group.invite_code.present?%>
+            <p><%= current_group.invite_code %></p>
+        <% end %>
     <% end %>
 </div>
