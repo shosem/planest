@@ -2,21 +2,19 @@
   <div class="modal-box flex flex-col gap-2">
     <h3 class="text-lg font-bold">グループを作成</h3>
 
-    <form class="flex flex-col gap-2" method="post">
-      <div class="flex flex-col gap-1">
-        <!-- この下のlabelとinputはパーシャル化するかも -->
-        <label for="group_name" class="label">グループ名</label>
+    <form class="flex flex-col gap-1" method="post">
+      <!-- この下のlabelとinputはパーシャル化するかも -->
+      <label for="group_name" class="label">グループ名</label>
 
-        <input
-          type="text"
-          id="group_name"
-          name="group_name"
-          autocomplete="off"
-          class="input input-bordered w-full"
-          placeholder="例：デザインチーム"
-          defaultValue=""
-        >
-      </div>
+      <input
+        type="text"
+        id="group_name"
+        name="group_name"
+        autocomplete="off"
+        class="input input-bordered w-full"
+        placeholder="例：デザインチーム"
+        defaultValue=""
+      >
     </form>
 
     <%# modal-action > method="dialog"配下のボタンを押下すると自動でダイアログが閉じる %>
