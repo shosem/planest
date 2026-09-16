@@ -20,7 +20,7 @@
       <% add_button = capture do %>
         <button
           class="btn btn-circle btn-xs text-base-content/60 p-0 text-xs"
-          onclick="add_edit_modal.showModal()"
+          onclick="group_add_edit_modal.showModal()"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +38,7 @@
           </svg>
         </button>
 
-        <%= render "groups/_demo/_add-edit-modal" %>
+        <%= render "groups/_demo/add-edit-modal" %>
       <% end %>
 
       <%= render "groups/_demo/group_list_sec_demo", 
