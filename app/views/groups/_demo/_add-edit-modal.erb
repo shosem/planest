@@ -17,16 +17,19 @@
           defaultValue=""
         >
       </div>
+    </form>
 
-      <div class="flex gap-2">
-        <button class="btn btn-outline flex-1">
+    <%# modal-action > method="dialog"配下のボタンを押下すると自動でダイアログが閉じる %>
+    <div class="modal-action">
+      <form method="dialog">
+        <button class="btn btn-outline">
           キャンセル
         </button>
+      </form>
 
-        <button class="btn btn-primary flex-1" type="submit">
-          作成する
-        </button>
-      </div>
-    </form>
+      <button class="btn btn-primary" type="submit" form="group_add_edit_form">
+        作成する
+      </button>
+    </div>
   </div>
 </dialog>
