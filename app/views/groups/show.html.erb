@@ -1,10 +1,10 @@
-<div>
+<div class="flex flex-col m-5">
     <!-- グループが作成されている場合のみ -->
     <% if current_group.present? %>
-        <h1><%= current_group.name %></h1>
+        <h1 class="font-bold text-4xl"><%= current_group.name %></h1>
         <!-- 招待コードがある時だけ表示 -->
         <% if current_group.invite_code.present?%>
-            <p><%= current_group.invite_code %></p>
+            <p>招待コード：<span class="text-gray-600 text-gray"><%= current_group.invite_code %></span></p>
         <% end %>
     <% end %>
 </div>
