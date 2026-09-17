@@ -6,9 +6,31 @@
     </div>
 
     <div class="flex items-center gap-1">
-      <button class="btn btn-outline btn-square text-base-content/60 p-0 text-xs">
-        <%= render "shared/icons/person" %>
-      </button>
+      <!-- アイコンボタンは意図を正確に表すのに限界があるためツールチップで説明を追加 -->
+      <div class="tooltip" data-tip="メンバーリストを表示">
+        <button
+          class="btn btn-outline btn-square"
+          onclick="members_modal.showModal()"
+        >
+          <%= render "shared/icons/person" %>
+        </button>
+      </div>
+
+      <dialog id="members_modal" class="modal">
+        <div class="modal-box w-fit min-w-80">
+          <h3 class="text-lg font-bold">メンバー</h3>
+
+          <ul class="menu">
+            <li>
+              メンバー1
+            </li>
+          </ul>
+        </div>
+
+        <form method="dialog" class="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
 
       <button class="btn btn-primary">
         <svg
