@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
   # ログイン後のページ遷移先を自分の個人グループに固定
   def after_sign_in_path_for(resource)
-    # 遷移先のパス
-    group_path(@user.id)
+    # 遷移先のパス（個人用グループのidを参照する）
+    group_path(resource.personal_group)
   end
 end
