@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root "pages#home"
 
   resources :groups, only: %i[ new create show destroy ]
   get "auth-demo", to: "pages#auth_demo", as: :auth_demo
