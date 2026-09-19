@@ -63,8 +63,19 @@
 
         <div id="b1" popover>
           <ul class="menu">
-            <li><a href="link-copy">招待リンクをコピーする</a></li>
-            <li><a href="group-delete">グループを削除する</a></li>
+            <li>
+              <a href="link-copy" class="justify-between">
+                招待リンクをコピーする
+                <%= render "shared/icons/clipboard_document", class_name: "size-4" %>
+              </a>
+            </li>
+
+            <li>
+              <a href="group-delete" class="justify-between">
+                グループを削除する
+                <%= render "shared/icons/trash", class_name: "size-4" %>
+              </a>
+            </li>
           </ul>
 
           <div class="divider my-0!"></div>
