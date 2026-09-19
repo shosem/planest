@@ -35,7 +35,7 @@
 
     <li>
       <div class="join p-0 gap-0">
-        <%= link_to group_path(group), class: "btn join-item flex-1 flex items-center gap-1 #{"btn-neutral" if active}", role: "button" do %>
+        <%= link_to group_path(group), class: "btn btn-sm join-item flex-1 flex items-center gap-1 #{"btn-neutral" if active}", role: "button" do %>
           <div class="min-w-0 flex-1 flex items-center gap-1">
             <div
               aria-label="Status"
@@ -47,7 +47,7 @@
         <% end %>
 
         <button
-          class="btn join-item <%= "btn-neutral" if active %>"
+          class="btn btn-sm join-item <%= "btn-neutral" if active %>"
           popovertarget="group-menu-popover"
         >
           <%= render "shared/icons/ellipsis_horizontal_circle", class_name: "size-5" %>
@@ -63,8 +63,8 @@
 
         <div id="b1" popover>
           <ul class="menu">
-            <li><a>招待リンクをコピーする</a></li>
-            <li><a>グループを削除する</a></li>
+            <li><a href="link-copy">招待リンクをコピーする</a></li>
+            <li><a href="group-delete">グループを削除する</a></li>
           </ul>
 
           <div class="divider my-0!"></div>
