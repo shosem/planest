@@ -1,0 +1,7 @@
+<% flash.each do |type, message| %>
+  <% style = type.to_sym == :notice ? "alert-success" : "alert-error" %>
+
+  <div role="alert" class="alert <%= style %> alert-soft justify-center">
+    <span><%= message %></span>
+  </div>
+<% end %>
