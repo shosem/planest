@@ -1,0 +1,33 @@
+<dialog id="group_add_edit_modal" class="modal">
+  <div class="modal-box flex flex-col gap-2">
+    <h3 class="text-lg font-bold">グループを作成</h3>
+
+    <form class="flex flex-col gap-1" method="post">
+      <!-- この下のlabelとinputはパーシャル化するかも -->
+      <label for="group_name" class="label">グループ名</label>
+
+      <input
+        type="text"
+        id="group_name"
+        name="group_name"
+        autocomplete="off"
+        class="input input-bordered w-full"
+        placeholder="例：デザインチーム"
+        defaultValue=""
+      >
+    </form>
+
+    <%# .modal-action > <form method="dialog">配下のボタンを押下すると自動でダイアログが閉じる %>
+    <div class="modal-action">
+      <form method="dialog">
+        <button class="btn btn-outline">
+          キャンセル
+        </button>
+      </form>
+
+      <button class="btn btn-primary" type="submit" form="group_add_edit_form">
+        作成する
+      </button>
+    </div>
+  </div>
+</dialog>

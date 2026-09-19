@@ -35,7 +35,11 @@
 
     <li>
       <%= link_to group_path(group), class: "#{"menu-active" if active}" do %>
-        <span class="badge badge-xs <%= active ? 'badge-primary' : 'badge-soft' %>"></span>
+        <div
+          aria-label="Status"
+          class="status <%= active ? 'status-primary' : '' %>"
+        ></div>
+
         <%= group.name %>
       <% end %>
     </li>
