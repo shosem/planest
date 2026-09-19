@@ -32,14 +32,14 @@
         <%= render "shared/sidebar" %>
 
         <main class="flex-1 h-screen">
-          <%= render "shared/flash_message" %>
+          <%= render "shared/flash_messages" %>
           <%= yield %>
         </main>
       </div>
     <% else %>
       <%# 認証画面 %>
       <main class="min-h-screen ml-auto mr-auto flex flex-col items-center justify-center">
-        <%= render "shared/flash_message" %>
+        <%= render "shared/flash_messages" %>
         <%= yield %>
       </main>
     <% end %>
