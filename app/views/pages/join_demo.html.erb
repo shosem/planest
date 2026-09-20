@@ -1,0 +1,27 @@
+<main class="min-h-screen bg-base-200 flex items-center justify-center p-4">
+  <section class="card bg-base-100 w-full max-w-md shadow-sm">
+    <div class="card-body">
+      <h1 class="card-title">グループに参加</h1>
+      <p class="text-base-content/70">
+        招待コードを入力してグループに参加します。
+      </p>
+
+      <form class="mt-4 flex flex-col gap-4">
+        <label class="form-control w-full">
+          <span class="label-text">招待コード</span>
+          <input
+            type="text"
+            name="invite_code"
+            placeholder="招待コードを入力"
+            class="input input-bordered w-full"
+          />
+        </label>
+
+        <div class="card-actions justify-end">
+          <%= link_to "戻る", root_path, class: "btn btn-ghost" %>
+          <button type="submit" class="btn btn-primary">参加する</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
