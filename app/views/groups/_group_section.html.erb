@@ -63,12 +63,12 @@
 
         <div id="b1" popover>
           <ul class="menu">
-            <li>
+            <li data-controller="share" data-share-url-value="<%= group.invite_code %>">
               <!-- 以下はbutton_toもしくはlink_toに置き換えてください -->
-              <a href="link-copy" class="justify-between">
+              <button id="copy-button" type="button" class="justify-between" data-action="click->share#copy">
                 招待リンクをコピーする
                 <%= render "shared/icons/clipboard_document", class_name: "size-4" %>
-              </a>
+              </button>
             </li>
 
             <li>
