@@ -23,6 +23,7 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
   </head>
 
   <body>
@@ -34,11 +35,17 @@
         <main class="flex-1 h-screen">
           <%= render "shared/flash_messages" %>
           <%= yield %>
+          <%= turbo_frame_tag "modal" %>
         </main>
       </div>
     <% else %>
       <%# 認証画面 %>
-      <main class="min-h-screen ml-auto mr-auto flex flex-col items-center justify-center">
+      <main
+        class="
+          min-h-screen ml-auto mr-auto flex flex-col items-center
+          justify-center
+        "
+      >
         <%= render "shared/flash_messages" %>
         <%= yield %>
       </main>
