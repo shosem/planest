@@ -10,4 +10,7 @@ class PagesController < ApplicationController
   def group_detail_demo
     render "groups/_demo/group_detail_demo"
   end
+
+  def join_demo
+  end
 end

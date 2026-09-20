@@ -1,0 +1,23 @@
+<main class="min-h-screen bg-base-200 flex items-center justify-center p-4">
+  <section class="card bg-base-100 w-full max-w-md shadow-sm">
+    <div class="card-body gap-6">
+      <div class="flex flex-col items-center justify-center gap-2">
+        <div class="badge badge-outline badge-accent badge-xl h-fit w-fit p-2">
+          <%= render "shared/icons/users", class_name: "size-9" %>
+        </div>
+
+        <h1 class="card-title">グループ名 への招待</h1>
+
+        <p class="text-base-content/70 text-center">
+          開発チーム に招待されています。このグループに参加しますか？
+        </p>
+      </div>
+
+      <form class="card-actions">
+        <%= link_to "戻る", root_path, class: "btn btn-outline flex-1" %>
+
+        <button type="submit" class="btn btn-primary flex-1">参加する</button>
+      </form>
+    </div>
+  </section>
+</main>
