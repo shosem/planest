@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   get "auth-demo", to: "pages#auth_demo", as: :auth_demo
   get "group-detail-demo", to: "pages#group_detail_demo", as: :group_detail_demo
   get "join_demo", to: "pages#join_demo", as: :join_demo
+  get "join/:invite_code", to: "group_members#new", as: :join
+  post "join/:invite_code", to: "group_members#create"
 end
