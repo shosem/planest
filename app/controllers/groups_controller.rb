@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   before_action :authenticate_user!
   
   def show
-    @group = Group.find(params[:id])
+    @group = Group.find_by(id: params[:id])
 
     # 自分が参加中のグループ以外にアクセスしようとすると弾かれる
     unless current_user.groups.include?(@group)
