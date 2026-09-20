@@ -14,15 +14,14 @@ class GroupsController < ApplicationController
     if @group.save
       redirect_to group_path(@group), success: "グループを作成しました"
     else
-      flash.now[:error] = "グループを作成できませんでした"
       render :new, status: :unprocessable_content
     end
   end
   def show; end
 
   private
-  
+
   def group_params
-    params.expect(group: [:name])
+    params.expect(group: [ :name ])
   end
 end

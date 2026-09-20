@@ -3,16 +3,24 @@
     <div class="flex flex-col gap-2 w-[50%] max-w-md bg-base-100 p-6 rounded-2xl">
       <h3 class="text-lg font-bold">グループを作成</h3>
 
-      <%= form_with model: @group, class: "flex flex-col gap-2" do |f| %>
+      <% if @group.errors.any? %>
+        <p class="alert alert-error alert-soft">グループを作成できませんでした</p>
+      <% end %>
+
+      <%= form_with model: @group, data: { turbo_frame: "_top" }, class: "flex flex-col gap-2" do |f| %>
         <%= f.label :name, class: "label" %>
         <%= f.text_field :name, autocomplete: "off", placeholder: "デザイングループ", class: "input input-bordered w-full" %>
+        <%= render "shared/input_error_messages", resource: @group, attr: :name %>
 
-        <div class="flex justify-end mt-2 gap-2">
+        <div
+          class="
+            flex justify-end
+            app/views/shared/_form_error_messages.html.erbmt-2 gap-2
+          "
+        >
           <%= f.submit "作成する", class: "btn btn-primary" %>
 
-          <button class="btn btn-outline">
-            キャンセル
-          </button>
+          <%= link_to "キャンセル", :back, data: { turbo_frame: "_top" }, class: "btn btn-outline" %>
         </div>
       <% end %>
     </div>
