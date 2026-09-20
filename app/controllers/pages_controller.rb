@@ -11,10 +11,6 @@ class PagesController < ApplicationController
     render "groups/_demo/group_detail_demo"
   end
 
-  def group_invite_demo
-    render "groups/_demo/join_demo/"
-  end
-
   def join_demo
   end
 end
