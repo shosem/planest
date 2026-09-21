@@ -19,7 +19,7 @@ class User < ApplicationRecord
   end
 
   def shared_groups
-    groups.reject(&:is_personal?)
+    groups.shared.reorder(group_members: { created_at: :asc })
   end
 
   private
