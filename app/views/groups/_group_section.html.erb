@@ -58,7 +58,9 @@
       </div>
 
       <%# ポップオーバー %>
+      <%# 削除ボタンの実装ができればパーシャル化しようと思う@shoem %>
       <% if mode == :shared %>
+        <%# _pathはjoin/:invite_code、_urlはURL全体を取得 %>
         <div
           class="megamenu max-sm:megamenu-vertical w-fit overflow-visible"
           id="<%= popover_id %>"
@@ -70,9 +72,7 @@
 
           <div id="b<%= group.id %>" popover>
             <ul class="menu">
-              <%# _pathはjoin/:invite_code、_urlはURL全体を取得 %>
               <li>
-                <!-- 以下はbutton_toもしくはlink_toに置き換えてください -->
                 <button
                   type="button"
                   class="justify-between"
@@ -99,11 +99,9 @@
             </div>
 
             <ul class="list bg-base-100 rounded-box shadow-md">
-              <li class="list-row">Dio Lupa</li>
-
-              <li class="list-row">Ellie Beilish</li>
-
-              <li class="list-row">Sabrino Gardener</li>
+              <% group.users.each do |user| %>
+                <li class="list-row"><%= user.name %></li>
+              <% end %>
             </ul>
           </div>
         </div>
