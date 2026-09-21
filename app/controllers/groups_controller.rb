@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
       render :new, status: :unprocessable_content
     end
   end
-  
+
   def show
     @group = Group.find_by(id: params[:id])
 
