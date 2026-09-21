@@ -1,12 +1,14 @@
 <%# locals: (title:, groups:, mode:) %>
 
+<% shared = mode == :shared %>
+
 <div class="flex items-center justify-between">
   <h2 class="font-bold text-base-content/60 text-xs flex-1">
     <%= title %>
   </h2>
 
-  <% if mode == :shared %>
-    <button class="btn btn-circle btn-xs text-base-content/60 p-0 text-xs">
+  <% if shared %>
+    <%= link_to new_group_path, data: { turbo_frame: "modal" }, class: "btn btn-circle btn-xs text-base-content/60 p-0 text-xs" do %>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"
@@ -21,7 +23,7 @@
           d="M12 4.5v15m7.5-7.5h-15"
         />
       </svg>
-    </button>
+    <% end %>
   <% end %>
 </div>
 
@@ -32,15 +34,34 @@
 
   <% groups.each do |group| %>
     <% active = group == current_group %>
+    <% popover_id = "group-menu-popover-#{group.id}" %>
 
     <li>
-      <%= link_to group_path(group), class: "#{"menu-active" if active}" do %>
-        <div
-          aria-label="Status"
-          class="status <%= active ? 'status-primary' : '' %>"
-        ></div>
+      <div class="join p-0 gap-0">
+        <%= link_to group_path(group), class: "btn btn-sm join-item flex-1 flex items-center gap-1 #{"btn-neutral" if active}", role: "button" do %>
+          <div class="min-w-0 flex-1 flex items-center gap-1">
+            <div
+              aria-label="Status"
+              class="status <%= active ? 'status-primary' : '' %>"
+            ></div>
 
-        <%= group.name %>
+            <%= group.name %>
+          </div>
+        <% end %>
+
+        <% if shared %>
+          <button
+            class="btn btn-sm join-item <%= "btn-neutral" if active %>"
+            popovertarget="<%= popover_id %>"
+          >
+            <%= render "shared/icons/ellipsis_horizontal_circle", class_name: "size-5" %>
+          </button>
+        <% end %>
+      </div>
+
+      <%# ポップオーバー %>
+      <% if shared %>
+        <%= render "groups/popover", group: group, id: popover_id %>
       <% end %>
     </li>
   <% end %>

@@ -1,0 +1,5 @@
+<% if resource.errors.details[attr].any? %>
+  <% resource.errors.full_messages.each do |message| %>
+    <p class="text-sm text-error"><%= message %></p>
+  <% end %>
+<% end %>
