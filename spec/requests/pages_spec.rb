@@ -6,7 +6,7 @@ RSpec.describe "Pages", type: :request do
       user = create(:user)
       sign_in user
       get "/"
-      expect(response).to have_http_status(302)
+      expect(response).to have_http_status(:found)
     end
   end
 end
