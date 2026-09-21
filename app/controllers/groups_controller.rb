@@ -23,12 +23,12 @@ class GroupsController < ApplicationController
     @group = current_user.owned_groups.find(params[:id])
 
     if @group.is_personal?
-      redirect_to group_path(@group), alert: "個人グループは削除できません"
+      redirect_to group_path(@group), alert: "個人グループは削除できません", status: :see_other
       return
     end
 
     @group.destroy!
-    redirect_to group_path(current_user.personal_group), success: "グループを削除しました"
+    redirect_to group_path(current_user.personal_group), success: "グループを削除しました", status: :see_other
   end
 
   private
