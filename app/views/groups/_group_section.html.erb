@@ -32,6 +32,7 @@
 
   <% groups.each do |group| %>
     <% active = group == current_group %>
+    <% popover_id = "group-menu-popover-#{group.id}" %>
 
     <li>
       <div class="join p-0 gap-0">
@@ -46,55 +47,68 @@
           </div>
         <% end %>
 
-        <button
-          class="btn btn-sm join-item <%= "btn-neutral" if active %>"
-          popovertarget="group-menu-popover"
+        <% if mode == :shared %>
+          <button
+            class="btn btn-sm join-item <%= "btn-neutral" if active %>"
+            popovertarget="<%= popover_id %>"
+          >
+            <%= render "shared/icons/ellipsis_horizontal_circle", class_name: "size-5" %>
+          </button>
+        <% end %>
+      </div>
+
+      <%# ポップオーバー %>
+      <% if mode == :shared %>
+        <div
+          class="megamenu max-sm:megamenu-vertical w-fit overflow-visible"
+          id="<%= popover_id %>"
+          popover
         >
-          <%= render "shared/icons/ellipsis_horizontal_circle", class_name: "size-5" %>
-        </button>
-      </div>
+          <span class="megamenu-active"></span>
 
-      <div
-        class="megamenu max-sm:megamenu-vertical w-fit overflow-visible"
-        id="group-menu-popover"
-        popover
-      >
-        <span class="megamenu-active"></span>
+          <div id="b<%= group.id %>" popover>
+            <ul class="menu">
+              <%# _pathはjoin/:invite_code、_urlはURL全体を取得 %>
+              <li
+                data-controller="share"
+                data-share-url-value="<%= join_url(group.invite_code) %>"
+              >
+                <!-- 以下はbutton_toもしくはlink_toに置き換えてください -->
+                <button
+                  type="button"
+                  class="justify-between"
+                  data-action="click->share#copy"
+                >
+                  招待リンクをコピーする
+                  <%= render "shared/icons/clipboard_document", class_name: "size-4" %>
+                </button>
+              </li>
 
-        <div id="b1" popover>
-          <ul class="menu">
-            <li data-controller="share" data-share-url-value="<%= group.invite_code %>">
-              <!-- 以下はbutton_toもしくはlink_toに置き換えてください -->
-              <button id="copy-button" type="button" class="justify-between" data-action="click->share#copy">
-                招待リンクをコピーする
-                <%= render "shared/icons/clipboard_document", class_name: "size-4" %>
-              </button>
-            </li>
+              <li>
+                <!-- 以下はbutton_toもしくはlink_toに置き換えてください -->
+                <a href="group-delete" class="justify-between">
+                  グループを削除する
+                  <%= render "shared/icons/trash", class_name: "size-4" %>
+                </a>
+              </li>
+            </ul>
 
-            <li>
-              <!-- 以下はbutton_toもしくはlink_toに置き換えてください -->
-              <a href="group-delete" class="justify-between">
-                グループを削除する
-                <%= render "shared/icons/trash", class_name: "size-4" %>
-              </a>
-            </li>
-          </ul>
+            <div class="divider my-0!"></div>
 
-          <div class="divider my-0!"></div>
+            <div class="p-4 pb-2 text-xs opacity-60 tracking-wide">
+              グループメンバー一覧
+            </div>
 
-          <div class="p-4 pb-2 text-xs opacity-60 tracking-wide">
-            グループメンバー一覧
+            <ul class="list bg-base-100 rounded-box shadow-md">
+              <li class="list-row">Dio Lupa</li>
+
+              <li class="list-row">Ellie Beilish</li>
+
+              <li class="list-row">Sabrino Gardener</li>
+            </ul>
           </div>
-
-          <ul class="list bg-base-100 rounded-box shadow-md">
-            <li class="list-row">Dio Lupa</li>
-
-            <li class="list-row">Ellie Beilish</li>
-
-            <li class="list-row">Sabrino Gardener</li>
-          </ul>
         </div>
-      </div>
+      <% end %>
     </li>
   <% end %>
 </ul>
