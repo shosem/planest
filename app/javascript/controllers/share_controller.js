@@ -8,6 +8,7 @@ export default class extends Controller {
     navigator.clipboard.writeText(this.urlValue)
   .then(() => {
     console.log("テキストがクリップボードにコピーされました");
+    this.element.hidePopover()
   })
   .catch((error) => {
     console.error("クリップボードへのコピーに失敗しました", error);
