@@ -1,5 +1,12 @@
 <% flash.each do |type, message| %>
-  <% daisy_type = { "notice" => "alert-success", "alert" => "alert-error" }[type.to_s] || "alert-#{type}" %>
+  <% daisy_type = {
+         "notice"  => "alert-success",
+         "success" => "alert-success",
+         "alert"   => "alert-error",
+         "error"   => "alert-error",
+         "info"    => "alert-info",
+         "warning" => "alert-warning"
+       }[type.to_s] || "" %>
 
   <div role="alert" class="alert <%= daisy_type %> alert-soft justify-center">
     <span><%= message %></span>
