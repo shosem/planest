@@ -62,6 +62,8 @@
         <div
           class="megamenu max-sm:megamenu-vertical w-fit overflow-visible"
           id="<%= popover_id %>"
+          data-controller="share"
+          data-share-url-value="<%= join_url(group.invite_code) %>"
           popover
         >
           <span class="megamenu-active"></span>
@@ -69,10 +71,7 @@
           <div id="b<%= group.id %>" popover>
             <ul class="menu">
               <%# _pathはjoin/:invite_code、_urlはURL全体を取得 %>
-              <li
-                data-controller="share"
-                data-share-url-value="<%= join_url(group.invite_code) %>"
-              >
+              <li>
                 <!-- 以下はbutton_toもしくはlink_toに置き換えてください -->
                 <button
                   type="button"
