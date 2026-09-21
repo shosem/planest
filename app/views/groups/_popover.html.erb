@@ -1,0 +1,45 @@
+<%# locals: (group:, id:) %>
+
+<div
+  class="megamenu max-sm:megamenu-vertical w-fit overflow-visible"
+  id="<%= id %>"
+  data-controller="share"
+  data-share-url-value="<%= join_url(group.invite_code) %>"
+  popover
+>
+  <span class="megamenu-active"></span>
+
+  <div id="b<%= group.id %>" popover>
+    <ul class="menu">
+      <li>
+        <button
+          type="button"
+          class="justify-between"
+          data-action="click->share#copy"
+        >
+          招待リンクをコピーする
+          <%= render "shared/icons/clipboard_document", class_name: "size-4" %>
+        </button>
+      </li>
+
+      <li>
+        <!-- 以下はbutton_toもしくはlink_toに置き換えてください -->
+        <a href="group-delete" class="justify-between">
+          グループを削除する <%= render "shared/icons/trash", class_name: "size-4" %>
+        </a>
+      </li>
+    </ul>
+
+    <div class="divider my-0!"></div>
+
+    <div class="p-4 pb-2 text-xs opacity-60 tracking-wide">
+      グループメンバー一覧
+    </div>
+
+    <ul class="list bg-base-100 rounded-box shadow-md">
+      <% group.users.each do |user| %>
+        <li class="list-row cursor-default"><%= user.name %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

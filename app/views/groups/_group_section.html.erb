@@ -1,11 +1,13 @@
 <%# locals: (title:, groups:, mode:) %>
 
+<% shared = mode == :shared %>
+
 <div class="flex items-center justify-between">
   <h2 class="font-bold text-base-content/60 text-xs flex-1">
     <%= title %>
   </h2>
 
-  <% if mode == :shared %>
+  <% if shared %>
     <%= link_to new_group_path, data: { turbo_frame: "modal" }, class: "btn btn-circle btn-xs text-base-content/60 p-0 text-xs" do %>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +49,7 @@
           </div>
         <% end %>
 
-        <% if mode == :shared %>
+        <% if shared %>
           <button
             class="btn btn-sm join-item <%= "btn-neutral" if active %>"
             popovertarget="<%= popover_id %>"
@@ -58,53 +60,9 @@
       </div>
 
       <%# ポップオーバー %>
-      <%# 削除ボタンの実装ができればパーシャル化しようと思う@shoem %>
-      <% if mode == :shared %>
+      <% if shared %>
         <%# _pathはjoin/:invite_code、_urlはURL全体を取得 %>
-        <div
-          class="megamenu max-sm:megamenu-vertical w-fit overflow-visible"
-          id="<%= popover_id %>"
-          data-controller="share"
-          data-share-url-value="<%= join_url(group.invite_code) %>"
-          popover
-        >
-          <span class="megamenu-active"></span>
-
-          <div id="b<%= group.id %>" popover>
-            <ul class="menu">
-              <li>
-                <button
-                  type="button"
-                  class="justify-between"
-                  data-action="click->share#copy"
-                >
-                  招待リンクをコピーする
-                  <%= render "shared/icons/clipboard_document", class_name: "size-4" %>
-                </button>
-              </li>
-
-              <li>
-                <!-- 以下はbutton_toもしくはlink_toに置き換えてください -->
-                <a href="group-delete" class="justify-between">
-                  グループを削除する
-                  <%= render "shared/icons/trash", class_name: "size-4" %>
-                </a>
-              </li>
-            </ul>
-
-            <div class="divider my-0!"></div>
-
-            <div class="p-4 pb-2 text-xs opacity-60 tracking-wide">
-              グループメンバー一覧
-            </div>
-
-            <ul class="list bg-base-100 rounded-box shadow-md">
-              <% group.users.each do |user| %>
-                <li class="list-row"><%= user.name %></li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
+        <%= render "groups/popover", group: group, id: popover_id %>
       <% end %>
     </li>
   <% end %>
