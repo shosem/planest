@@ -25,9 +25,10 @@
 
       <li>
         <!-- 以下はbutton_toもしくはlink_toに置き換えてください -->
-        <a href="group-delete" class="justify-between">
-          グループを削除する <%= render "shared/icons/trash", class_name: "size-4" %>
-        </a>
+        <!--<a href="group-delete" class="justify-between"> -->
+        <!-- グループを削除するボタンをクリックして「本当に削除しますか？」と確認ダイアログが表示 -->
+          <%= button_to "グループを削除する", group_path(group), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "justify-between" %>
+        <!-- </a> -->
       </li>
     </ul>
 
