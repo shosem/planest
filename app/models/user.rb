@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :owned_groups, class_name: "Group", foreign_key: :owner_id, inverse_of: :owner
   has_many :group_members, dependent: :destroy
   has_many :groups, -> { order(:created_at) }, through: :group_members
+  has_many :tasks, dependent: :destroy
 
   after_create :generate_personal_group
 
