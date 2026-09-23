@@ -1,0 +1,13 @@
+<%# locals: (status:) %>
+<% status_options = {
+    new: { label: "新規", badge_variant: "badge-info", status_variant: "status-info" },
+    in_progress: { label: "進行中", badge_variant: "badge-warning", status_variant: "status-warning" },
+    completed: { label: "完了", badge_variant: "badge-primary", status_variant: "status-primary" }
+  }
+  status_option = status_options.fetch(status.to_sym) %>
+
+<div class="badge badge-soft badge-outline <%= status_option[:badge_variant] %>">
+  <div aria-label="Status" class="status <%= status_option[:status_variant] %>"></div>
+
+  <%= status_option[:label] %>
+</div>

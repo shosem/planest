@@ -35,10 +35,7 @@
                       タスクタイトルです、ここは@task.titleに置き換えてください。
                     </span>
 
-                    <div class="badge badge-soft badge-outline badge-primary">
-                      <div aria-label="Status" class="status status-primary"></div>
-                      完了
-                    </div>
+                    <%= render "tasks/_shared/status_badge", status: :in_progress %>
                   </h1>
 
                   <button>編集ボタン</button>
