@@ -11,5 +11,7 @@
     <button class="btn btn-primary">
       <%= render "shared/icons/plus", class_name: "size-3" %> タスク追加
     </button>
+
+    <%= button_to "タスク追加", task_path, method: :get, class:  "btn btn-primary" %>
   </header>
 </div>
