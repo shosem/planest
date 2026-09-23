@@ -12,10 +12,14 @@
           id="task-title"
           name="title"
           autocomplete="off"
-          class="input w-full"
+          class="input w-full border <%= "border-error focus:outline-error" if error %>"
           placeholder="タスクのタイトル"
           defaultValue=""
         >
+
+        <% if error %>
+          <p class="text-error text-sm">タイトルエラー</p>
+        <% end %>
       </div>
 
       <div class="flex flex-col gap-1">
@@ -28,10 +32,14 @@
           id="task-content"
           name="content"
           autocomplete="off"
-          class="textarea w-full"
+          class="textarea w-full <%= "border-error focus:outline-error" if error %>"
           placeholder="詳細や背景情報を入力"
           defaultValue=""
         ></textarea>
+
+        <% if error %>
+          <p class="text-error text-sm">コンテントエラー</p>
+        <% end %>
       </div>
     </form>
 
