@@ -12,7 +12,7 @@
     <% end %>
 
     <%= form_with local: true, html: { id: "task-add-edit-form", class: "flex flex-col gap-2" } do |f| %>
-      <%= render "shared/input_field_section", error: error do |field_class| %>
+      <%= render "shared/input_field_section", errors: error do |field_class| %>
         <%= f.label :title, "タイトル", class: "label" %>
 
         <%= f.text_field :title,
@@ -22,7 +22,7 @@
       <% end %>
 
       <% if is_edit_mode %>
-        <%= render "shared/input_field_section", error: error do |field_class| %>
+        <%= render "shared/input_field_section", errors: error do |field_class| %>
           <%= f.label :status, "ステータス", class: "label" %>
 
           <%= f.select :status,
@@ -32,7 +32,7 @@
         <% end %>
       <% end %>
 
-      <%= render "shared/input_field_section", error: "error-message" do |field_class| %>
+      <%= render "shared/input_field_section", errors: ["error1", "error2"] do |field_class| %>
         <%= f.label :content, "詳細", class: "label" %>
 
         <%= f.text_area :content,
