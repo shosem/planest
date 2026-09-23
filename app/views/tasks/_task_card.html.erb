@@ -1,35 +1,21 @@
 <%# locals: (index:) %>
 
-<div class="card bg-base-200 w-full border border-neutral" role="button">
+<%= link_to "#task-detail", class: "card bg-base-200 w-full border border-neutral", role: "button" do %>
   <div class="card-body gap-3">
     <div class="flex flex-col gap-2">
       <div class="flex items-center justify-between gap-1">
         <h1 class="card-title min-w-0 flex-1 flex-nowrap gap-2 whitespace-nowrap">
-          <%= link_to "#task-detail", class: "min-w-0 flex-1 truncate" do %>
-            タスクタイトルです、ここは@task.titleに置き換えてください。
-          <% end %>
-
+          タスクタイトルです、ここは@task.titleに置き換えてください。
           <%= render "tasks/_shared/status_badge", status: :in_progress %>
         </h1>
-
-        <!-- over-flow-y内でしかツールチップを表示できず、ツールチップの上端が見切れてしまうので下に表示 -->
-        <div class="tooltip tooltip-bottom tooltip-black">
-          <div class="tooltip-content">
-            タスクを編集
-          </div>
-
-          <%= link_to "#edit", class: "btn btn-circle" do %>
-            <%= render "shared/icons/pencil_square" %>
-          <% end %>
-        </div>
       </div>
 
       <p class="text-base-content/70">
-        タスクコンテントです、ここは@task.contentに置き換えてください。
-        タスクコンテントです、ここは@task.contentに置き換えてください。
-        タスクコンテントです、ここは@task.contentに置き換えてください。
-        タスクコンテントです、ここは@task.contentに置き換えてください。
-        タスクコンテントです、ここは@task.contentに置き換えてください。
+        タスクコンテントです、ここは@task.descriptionに置き換えてください。
+        タスクコンテントです、ここは@task.descriptionに置き換えてください。
+        タスクコンテントです、ここは@task.descriptionに置き換えてください。
+        タスクコンテントです、ここは@task.descriptionに置き換えてください。
+        タスクコンテントです、ここは@task.descriptionに置き換えてください。
       </p>
     </div>
 
@@ -40,4 +26,4 @@
       <p class="text-xs">x件のコメント</p>
     </div>
   </div>
-</div>
+<% end %>
