@@ -12,10 +12,12 @@
     <% end %>
 
     <form id="task-add-edit-form" class="flex flex-col gap-2" method="post">
-      <%= render "shared/input_field_section", label: "タイトル", error: error, input_id: "task-title" do |field_class, input_id| %>
+      <%= render "shared/input_field_section", error: error do |field_class| %>
+        <label for="task-title" class="label">タイトル</label>
+
         <input
           type="text"
-          id="<%= input_id %>"
+          id="task-title"
           name="title"
           autocomplete="off"
           class="input w-full border <%= field_class %>"
@@ -25,8 +27,14 @@
       <% end %>
 
       <% if is_edit_mode %>
-        <%= render "shared/input_field_section", label: "ステータス", error: error, input_id: "task-status" do |field_class, input_id| %>
-          <select class="select <%= field_class %>" name="task-status">
+        <%= render "shared/input_field_section", error: error  do |field_class| %>
+          <label for="task-status" class="label">ステータス</label>
+
+          <select
+            class="select <%= field_class %>"
+            name="task-status"
+            id="task-status"
+          >
             <% %w[new in_progress done].each do |status| %>
               <option value="<%= status %>">
                 <%= render "tasks/_shared/status_badge", status: status %>
@@ -36,10 +44,12 @@
         <% end %>
       <% end %>
 
-      <%= render "shared/input_field_section", label: "詳細", error: 'error-message', input_id: "task-content" do |field_class, input_id| %>
+      <%= render "shared/input_field_section", error: 'error-message' do |field_class| %>
+        <label for="task-description" class="label">詳細</label>
+
         <textarea
           type="text"
-          id="<%= input_id %>"
+          id="task-description"
           name="content"
           autocomplete="off"
           class="textarea w-full <%= field_class %>"
