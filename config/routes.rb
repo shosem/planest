@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   root "pages#home"
 
   resources :groups, only: %i[ new create show destroy ]
+  resources :tasks, only: %i[ show ]
   get "auth-demo", to: "pages#auth_demo", as: :auth_demo
   get "group-detail-demo", to: "pages#group_detail_demo", as: :group_detail_demo
   get "join_demo", to: "pages#join_demo", as: :join_demo
