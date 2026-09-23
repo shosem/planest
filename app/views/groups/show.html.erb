@@ -17,7 +17,9 @@
     <div class="w-2xl mx-auto">
       <ul class="flex flex-col gap-2">
         <% 5.times do |index| %>
-          <%= render "tasks/task_card", index: index %>
+          <li id="task-card-<%= index + 1 %>">
+            <%= render "tasks/task_card", index: index %>
+          </li>
         <% end %>
       </ul>
     </div>
