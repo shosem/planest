@@ -1,0 +1,29 @@
+<%# locals: (index:) %>
+
+<%= link_to "#task-detail", class: "card bg-base-200 w-full border border-neutral", role: "button" do %>
+  <div class="card-body gap-3">
+    <div class="flex flex-col gap-2">
+      <div class="flex items-center justify-between gap-1">
+        <h1 class="card-title min-w-0 flex-1 flex-nowrap gap-2 whitespace-nowrap">
+          タスクタイトルです、ここは@task.titleに置き換えてください。
+          <%= render "tasks/_shared/status_badge", status: :in_progress %>
+        </h1>
+      </div>
+
+      <p class="text-base-content/70">
+        タスクコンテントです、ここは@task.descriptionに置き換えてください。
+        タスクコンテントです、ここは@task.descriptionに置き換えてください。
+        タスクコンテントです、ここは@task.descriptionに置き換えてください。
+        タスクコンテントです、ここは@task.descriptionに置き換えてください。
+        タスクコンテントです、ここは@task.descriptionに置き換えてください。
+      </p>
+    </div>
+
+    <div class="flex items-center gap-1 text-base-content/70">
+      <%= render "shared/icons/chat_bubble_left", class_name: "size-3" %>
+
+      <!-- 以下はコメント数をリレーションで所得して渡してください。 -->
+      <p class="text-xs">x件のコメント</p>
+    </div>
+  </div>
+<% end %>

@@ -1,4 +1,4 @@
-<div class="flex flex-col">
+<div class="h-screen flex flex-col">
   <header class="pt-8 pb-5 w-2xl mx-auto flex justify-between items-center">
     <!-- グループが作成されている場合のみ -->
     <% if @group.present? %>
@@ -8,8 +8,20 @@
       </div>
     <% end %>
 
-    <button class="btn btn-primary">
+    <button class="btn btn-primary btn-outline">
       <%= render "shared/icons/plus", class_name: "size-3" %> タスク追加
     </button>
   </header>
+
+  <div class="flex-1 min-h-0 overflow-y-auto pb-8">
+    <div class="w-2xl mx-auto">
+      <ul class="flex flex-col gap-2">
+        <% 5.times do |index| %>
+          <li id="task-card-<%= index + 1 %>">
+            <%= render "tasks/task_card", index: index %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>
