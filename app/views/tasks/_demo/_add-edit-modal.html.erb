@@ -15,7 +15,7 @@
         >
       <% end %>
 
-      <%= render "shared/input-field-section", label: "詳細", error: error, input_id: "task-content" do |field_class, input_id| %>
+      <%= render "shared/input-field-section", label: "詳細", error: 'error-message', input_id: "task-content" do |field_class, input_id| %>
         <textarea
           type="text"
           id="<%= input_id %>"
