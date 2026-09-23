@@ -2,6 +2,10 @@
   <div class="modal-box flex flex-col gap-2">
     <h3 class="text-lg font-bold">タスクを追加</h3>
 
+    <% if true %>
+      <p class="alert alert-error alert-soft">タスクを作成できませんでした</p>
+    <% end %>
+
     <form id="task-add-edit-form" class="flex flex-col gap-2" method="post">
       <%= render "shared/input-field-section", label: "タイトル", error: error, input_id: "task-title" do |field_class, input_id| %>
         <input
