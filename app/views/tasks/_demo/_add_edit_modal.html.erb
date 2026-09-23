@@ -11,53 +11,36 @@
       <p class="alert alert-error alert-soft">タスクを作成できませんでした</p>
     <% end %>
 
-    <form id="task-add-edit-form" class="flex flex-col gap-2" method="post">
+    <%= form_with local: true, html: { id: "task-add-edit-form", class: "flex flex-col gap-2" } do |f| %>
       <%= render "shared/input_field_section", error: error do |field_class| %>
-        <label for="task-title" class="label">タイトル</label>
+        <%= f.label :title, "タイトル", class: "label" %>
 
-        <input
-          type="text"
-          id="task-title"
-          name="title"
-          autocomplete="off"
-          class="input w-full border <%= field_class %>"
-          placeholder="タスクのタイトル"
-          defaultValue=""
-        >
+        <%= f.text_field :title,
+              autocomplete: "off",
+              class: "input w-full border #{field_class}",
+              placeholder: "タスクのタイトル" %>
       <% end %>
 
       <% if is_edit_mode %>
-        <%= render "shared/input_field_section", error: error  do |field_class| %>
-          <label for="task-status" class="label">ステータス</label>
+        <%= render "shared/input_field_section", error: error do |field_class| %>
+          <%= f.label :status, "ステータス", class: "label" %>
 
-          <select
-            class="select <%= field_class %>"
-            name="task-status"
-            id="task-status"
-          >
-            <% %w[new in_progress done].each do |status| %>
-              <option value="<%= status %>">
-                <%= render "tasks/_shared/status_badge", status: status %>
-              </option>
-            <% end %>
-          </select>
+          <%= f.select :status,
+                %w[new in_progress done].map { |status| [status, status] },
+                {},
+                class: "select #{field_class}" %>
         <% end %>
       <% end %>
 
-      <%= render "shared/input_field_section", error: 'error-message' do |field_class| %>
-        <label for="task-description" class="label">詳細</label>
+      <%= render "shared/input_field_section", error: "error-message" do |field_class| %>
+        <%= f.label :content, "詳細", class: "label" %>
 
-        <textarea
-          type="text"
-          id="task-description"
-          name="content"
-          autocomplete="off"
-          class="textarea w-full <%= field_class %>"
-          placeholder="詳細や背景情報を入力"
-          defaultValue=""
-        ></textarea>
+        <%= f.text_area :content,
+              autocomplete: "off",
+              class: "textarea w-full #{field_class}",
+              placeholder: "詳細や背景情報を入力" %>
       <% end %>
-    </form>
+    <% end %>
 
     <%# .modal-action > <form method="dialog">配下のボタンを押下すると自動でダイアログが閉じる %>
     <div class="modal-action">
