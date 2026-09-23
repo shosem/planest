@@ -24,9 +24,9 @@
           >
             <div class="card-body gap-6">
               <div class="flex flex-col gap-2">
-                <div class="flex justify-between">
+                <div class="flex justify-between gap-1">
                   <h1 class="card-title">
-                    タスクタイトル
+                    タスクタイトルです、ここは@task.titleに置き換えてください。
                     <div class="badge badge-soft badge-primary">Primary</div>
                   </h1>
 
@@ -34,14 +34,18 @@
                 </div>
 
                 <p class="text-base-content/70">
-                  タスクコンテントタスクコンテント タスクコンテントタスクコンテント タスクコンテントタスクコンテント
-                  タスクコンテントタスクコンテント
+                  タスクコンテントです、ここは@task.contentに置き換えてください。
+                  タスクコンテントです、ここは@task.contentに置き換えてください。
+                  タスクコンテントです、ここは@task.contentに置き換えてください。
+                  タスクコンテントです、ここは@task.contentに置き換えてください。
+                  タスクコンテントです、ここは@task.contentに置き換えてください。
                 </p>
               </div>
 
               <div class="flex items-center gap-1 text-base-content/70">
                 <%= render "shared/icons/chat_bubble_left", class_name: "size-3" %>
 
+                <!-- 以下はコメント数をリレーションで所得して渡してください。 -->
                 <p class="text-xs">x件のコメント</p>
               </div>
             </div>
