@@ -3,7 +3,7 @@
 <% action_button_label = is_edit_mode ? "更新する" : "追加する" %>
 
 <%= form_with local: true, html: { id: "task-add-edit-form", class: "flex flex-col gap-2" } do |f| %>
-  <%= render "shared/input_layout" do |field_class| %>
+  <%= render "shared/input_field_layout" do |field_class| %>
     <%= f.label :title, "タイトル", class: "label" %>
 
     <%= f.text_field :title,
@@ -13,7 +13,7 @@
   <% end %>
 
   <% if is_edit_mode %>
-    <%= render "shared/input_layout" do |field_class| %>
+    <%= render "shared/input_field_layout" do |field_class| %>
       <%= f.label :status, "ステータス", class: "label" %>
 
       <%= f.select :status, {}, {}, class: "select #{field_class}" do %>
@@ -26,7 +26,7 @@
     <% end %>
   <% end %>
 
-  <%= render "shared/input_layout", errors: ["error1", "error2"] do |field_class| %>
+  <%= render "shared/input_field_layout", errors: ["error1", "error2"] do |field_class| %>
     <%= f.label :content, "詳細", class: "label" %>
 
     <%= f.text_area :content,
