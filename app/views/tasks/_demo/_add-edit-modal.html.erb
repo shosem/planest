@@ -1,0 +1,51 @@
+<dialog id="task_add_edit_modal" class="modal" open>
+  <div class="modal-box flex flex-col gap-2">
+    <h3 class="text-lg font-bold">タスクを追加</h3>
+
+    <form id="task-add-edit-form" class="flex flex-col gap-2" method="post">
+      <div class="flex flex-col gap-1">
+        <!-- この下のlabelとinputはパーシャル化するかも -->
+        <label for="task-title" class="label">タイトル</label>
+
+        <input
+          type="text"
+          id="task-title"
+          name="title"
+          autocomplete="off"
+          class="input w-full"
+          placeholder="タスクのタイトル"
+          defaultValue=""
+        >
+      </div>
+
+      <div class="flex flex-col gap-1">
+        <label for="task-content" class="label gap-0">
+          詳細 <span class="text-xs">（任意）</span>
+        </label>
+
+        <textarea
+          type="text"
+          id="task-content"
+          name="content"
+          autocomplete="off"
+          class="textarea w-full"
+          placeholder="詳細や背景情報を入力"
+          defaultValue=""
+        ></textarea>
+      </div>
+    </form>
+
+    <%# .modal-action > <form method="dialog">配下のボタンを押下すると自動でダイアログが閉じる %>
+    <div class="modal-action">
+      <form method="dialog">
+        <button class="btn btn-outline">
+          キャンセル
+        </button>
+      </form>
+
+      <button class="btn btn-primary" type="submit" form="task_add_edit_form">
+        追加する
+      </button>
+    </div>
+  </div>
+</dialog>
