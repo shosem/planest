@@ -19,6 +19,16 @@
         >
       <% end %>
 
+      <%= render "shared/input-field-section", label: "ステータス", error: error, input_id: "task-status" do |field_class, input_id| %>
+        <select class="select <%= field_class %>" name="task-status">
+          <% ["new", "in_progress", "done"].each do |status| %>
+            <option value="<%= status %>">
+              <%= render "tasks/_shared/status_badge", status: status %>
+            </option>
+          <% end %>
+        </select>
+      <% end %>
+
       <%= render "shared/input-field-section", label: "詳細", error: 'error-message', input_id: "task-content" do |field_class, input_id| %>
         <textarea
           type="text"
