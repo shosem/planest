@@ -2,6 +2,7 @@ class Group < ApplicationRecord
   belongs_to :owner, class_name: "User", inverse_of: :owned_groups
   has_many :group_members, dependent: :destroy
   has_many :users, through: :group_members
+  has_many :tasks, dependent: :destroy
 
   validates :name, presence: true
   # is_personalがtrueで「nilであること」を、falseで「値が入っていること」を検証

@@ -6,7 +6,7 @@
         <h1 class="font-bold text-4xl"><%= @group.name %></h1>
         <p class="text-gray-600 text-gray">n件のタスク</p>
       </div>
-      <%= link_to new_group_task_path(@group), data: { turbo_frame: "modal" }, class: "btn btn-primary" do %>
+      <%= link_to new_group_task_path(@group), data: { turbo_frame: "modal" }, class: "btn btn-primary btn-outline" do %>
         <%= render "shared/icons/plus", class_name: "size-3" %> タスク追加
       <% end %>
     <% end %>
