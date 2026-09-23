@@ -1,0 +1,11 @@
+<div class="flex flex-col gap-1">
+  <% if label.present? %>
+    <label for="<%= input_id %>" class="label"><%= label %></label>
+  <% end %>
+
+  <%= yield(error.present? ? "border-error focus:outline-error" : "", input_id) %>
+
+  <% if error.present? %>
+    <p class="text-error text-sm"><%= error %></p>
+  <% end %>
+</div>

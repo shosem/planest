@@ -3,44 +3,29 @@
     <h3 class="text-lg font-bold">タスクを追加</h3>
 
     <form id="task-add-edit-form" class="flex flex-col gap-2" method="post">
-      <div class="flex flex-col gap-1">
-        <!-- この下のlabelとinputはパーシャル化するかも -->
-        <label for="task-title" class="label">タイトル</label>
-
+      <%= render "shared/input-field-section", label: "タイトル", error: error, input_id: "task-title" do |field_class, input_id| %>
         <input
           type="text"
-          id="task-title"
+          id="<%= input_id %>"
           name="title"
           autocomplete="off"
-          class="input w-full border <%= "border-error focus:outline-error" if error %>"
+          class="input w-full border <%= field_class %>"
           placeholder="タスクのタイトル"
           defaultValue=""
         >
+      <% end %>
 
-        <% if error %>
-          <p class="text-error text-sm">タイトルエラー</p>
-        <% end %>
-      </div>
-
-      <div class="flex flex-col gap-1">
-        <label for="task-content" class="label gap-0">
-          詳細 <span class="text-xs">（任意）</span>
-        </label>
-
+      <%= render "shared/input-field-section", label: "詳細", error: error, input_id: "task-content" do |field_class, input_id| %>
         <textarea
           type="text"
-          id="task-content"
+          id="<%= input_id %>"
           name="content"
           autocomplete="off"
-          class="textarea w-full <%= "border-error focus:outline-error" if error %>"
+          class="textarea w-full <%= field_class %>"
           placeholder="詳細や背景情報を入力"
           defaultValue=""
         ></textarea>
-
-        <% if error %>
-          <p class="text-error text-sm">コンテントエラー</p>
-        <% end %>
-      </div>
+      <% end %>
     </form>
 
     <%# .modal-action > <form method="dialog">配下のボタンを押下すると自動でダイアログが閉じる %>
