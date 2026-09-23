@@ -1,0 +1,47 @@
+<% mode = local_assigns.fetch(:mode, "add") %>
+<% is_edit_mode = mode.to_s == "edit" %>
+<% action_button_label = is_edit_mode ? "更新する" : "追加する" %>
+
+<%= form_with local: true, html: { id: "task-add-edit-form", class: "flex flex-col gap-2" } do |f| %>
+  <%= render "shared/input_field_section" do |field_class| %>
+    <%= f.label :title, "タイトル", class: "label" %>
+
+    <%= f.text_field :title,
+          autocomplete: "off",
+          class: "input w-full border #{field_class}",
+          placeholder: "タスクのタイトル" %>
+  <% end %>
+
+  <% if is_edit_mode %>
+    <%= render "shared/input_field_section" do |field_class| %>
+      <%= f.label :status, "ステータス", class: "label" %>
+
+      <%= f.select :status, {}, {}, class: "select #{field_class}" do %>
+        <% %w[new in_progress done].each do |status| %>
+          <option value="<%= status %>">
+            <%= render "tasks/_shared/status_badge", status: status %>
+          </option>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= render "shared/input_field_section", errors: ["error1", "error2"] do |field_class| %>
+    <%= f.label :content, "詳細", class: "label" %>
+
+    <%= f.text_area :content,
+          autocomplete: "off",
+          class: "textarea w-full #{field_class}",
+          placeholder: "詳細や背景情報を入力" %>
+  <% end %>
+
+  <div class="modal-action">
+    <button class="btn btn-outline">
+      キャンセル
+    </button>
+
+    <button class="btn btn-primary" type="submit">
+      <%= action_button_label %>
+    </button>
+  </div>
+<% end %>
