@@ -12,7 +12,7 @@
     <% end %>
 
     <form id="task-add-edit-form" class="flex flex-col gap-2" method="post">
-      <%= render "shared/input-field-section", label: "タイトル", error: error, input_id: "task-title" do |field_class, input_id| %>
+      <%= render "shared/input_field_section", label: "タイトル", error: error, input_id: "task-title" do |field_class, input_id| %>
         <input
           type="text"
           id="<%= input_id %>"
@@ -25,7 +25,7 @@
       <% end %>
 
       <% if is_edit_mode %>
-        <%= render "shared/input-field-section", label: "ステータス", error: error, input_id: "task-status" do |field_class, input_id| %>
+        <%= render "shared/input_field_section", label: "ステータス", error: error, input_id: "task-status" do |field_class, input_id| %>
           <select class="select <%= field_class %>" name="task-status">
             <% %w[new in_progress done].each do |status| %>
               <option value="<%= status %>">
@@ -36,7 +36,7 @@
         <% end %>
       <% end %>
 
-      <%= render "shared/input-field-section", label: "詳細", error: 'error-message', input_id: "task-content" do |field_class, input_id| %>
+      <%= render "shared/input_field_section", label: "詳細", error: 'error-message', input_id: "task-content" do |field_class, input_id| %>
         <textarea
           type="text"
           id="<%= input_id %>"
