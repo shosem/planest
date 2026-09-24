@@ -71,4 +71,15 @@
       </ul>
     </section>
   </div>
+
+  <footer class="px-5 py-4 border-t border-neutral">
+    <%= form_with local: true, html: { id: "task-add-edit-form", class: "flex gap-2 items-end" } do |f| %>
+      <%= f.text_area :title,
+          autocomplete: "off",
+          class: "input w-full flex-1 border textarea",
+          placeholder: "コメントを入力" %>
+
+      <%= f.submit class: "btn btn-primary" %>
+    <% end %>
+  </footer>
 </div>
