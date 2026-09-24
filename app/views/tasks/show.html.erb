@@ -1,5 +1,5 @@
 <div class="h-screen flex flex-col">
-  <header class="pt-8 pb-3 w-full flex flex-col gap-2 border-b border-neutral">
+  <header class="pt-8 w-full flex flex-col gap-2">
     <div class="flex flex-col gap-1 justify-center mx-auto w-2xl">
       <h2 class="font-bold text-2xl flex justify-between items-center">
         タスク名
@@ -27,24 +27,45 @@
       </h2>
 
       <%= render "tasks/_shared/status_badge", status: :in_progress %>
-
-      <section class="flex flex-col gap-1">
-        <h3 class="text-base-content/70">説明</h3>
-        <p>コンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツ</p>
-      </section>
     </div>
   </header>
 
+  <div class="divider divider-neutral"></div>
+
   <div class="flex-1 min-h-0 overflow-y-auto pb-8">
+    <section class="flex flex-col gap-1 justify-center mx-auto w-2xl">
+      <h3 class="text-base-content/70">説明</h3>
+      <p>コンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツ</p>
+    </section>
+
+    <div class="divider divider-neutral"></div>
+
     <section class="w-2xl mx-auto flex flex-col gap-1">
       <h3 class="text-base-content/70">
         コメント <span class="text-info">(2)</span>
       </h3>
 
-      <ul class="flex flex-col gap-2">
-        <% 5.times do |index| %>
-          <li id="task-card-<%= index + 1 %>">
-            <%= render "tasks/task_card", index: index %>
+      <ul class="flex flex-col gap-4">
+        <% 20.times do |index| %>
+          <li>
+            <div class="flex gap-3 items-start">
+              <div class="avatar avatar-placeholder">
+                <div class="bg-neutral text-neutral-content w-8 rounded-full">
+                  <span><%= current_user.name.first %></span>
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-1">
+                <div class="flex gap-2 items-end">
+                  <p class="text-bold"><%= current_user.name %></p>
+                  <p class="text-base-content/70 text-sm">9月6日 10:30</p>
+                </div>
+
+                <span class="text-base-content/90">
+                  コメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメント
+                </span>
+              </div>
+            </div>
           </li>
         <% end %>
       </ul>
