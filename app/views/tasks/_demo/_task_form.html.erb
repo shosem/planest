@@ -17,7 +17,7 @@
       <%= f.label :status, "ステータス", class: "label" %>
 
       <%= f.select :status, {}, {}, class: "select #{field_class}" do %>
-        <% %w[new in_progress done].each do |status| %>
+        <% %w[todo in_progress done].each do |status| %>
           <option value="<%= status %>">
             <%= render "tasks/_shared/status_badge", status: status %>
           </option>
