@@ -1,7 +1,31 @@
 <div class="h-screen flex flex-col">
   <header class="pt-8 pb-3 w-full flex flex-col gap-2 border-b border-neutral">
     <div class="flex flex-col gap-1 justify-center mx-auto w-2xl">
-      <h2 class="font-bold text-4xl">タスク名</h2>
+      <h2 class="font-bold text-2xl flex justify-between items-center">
+        タスク名
+        <div class="flex gap-2 items-center">
+          <div class="tooltip tooltip-bottom tooltip-black tooltip-secondary">
+            <div class="tooltip-content">
+              タスクを編集
+            </div>
+
+            <%= link_to "#edit", class: "btn btn-circle btn-outline btn-secondary" do %>
+              <%= render "shared/icons/pencil_square" %>
+            <% end %>
+          </div>
+
+          <div class="tooltip tooltip-bottom tooltip-black tooltip-error">
+            <div class="tooltip-content">
+              タスクを削除
+            </div>
+
+            <%= link_to "#edit", class: "btn btn-circle btn-error btn-outline" do %>
+              <%= render "shared/icons/trash" %>
+            <% end %>
+          </div>
+        </div>
+      </h2>
+
       <%= render "tasks/_shared/status_badge", status: :in_progress %>
 
       <section class="flex flex-col gap-1">
