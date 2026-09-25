@@ -2,7 +2,9 @@
 <% is_edit_mode = mode.to_s == "edit" %>
 <% action_button_label = is_edit_mode ? "更新する" : "追加する" %>
 
+<%# model: @taskを渡すようにしてください %>
 <%= form_with local: true, html: { id: "task-add-edit-form", class: "flex flex-col gap-2" } do |f| %>
+  <%# errors: @task.errors.details[title].full_messages のような形でエラーメッセージ配列を渡してください %>
   <%= render "shared/input_field_layout" do |field_class| %>
     <%= f.label :title, "タイトル", class: "label" %>
 
@@ -17,7 +19,7 @@
       <%= f.label :status, "ステータス", class: "label" %>
 
       <%= f.select :status, {}, {}, class: "select #{field_class}" do %>
-        <% %w[new in_progress done].each do |status| %>
+        <% %w[todo in_progress done].each do |status| %>
           <option value="<%= status %>">
             <%= render "tasks/_shared/status_badge", status: status %>
           </option>
