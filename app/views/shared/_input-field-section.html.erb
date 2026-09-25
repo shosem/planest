@@ -1,7 +1,0 @@
-<div class="flex flex-col gap-1">
-  <%= yield(error.present? ? "border-error focus:outline-error" : "") %>
-
-  <% if error.present? %>
-    <p class="text-error text-sm"><%= error %></p>
-  <% end %>
-</div>

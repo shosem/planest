@@ -1,0 +1,12 @@
+<% errors = Array(local_assigns[:errors]).compact %>
+<% field_class = errors.any? ? "border-error focus:outline-error" : "" %>
+
+<div class="flex flex-col gap-1">
+  <%= yield(field_class) %>
+
+  <% if messages.any? %>
+    <% messages.each do |message| %>
+      <p class="text-sm text-error"><%= message %></p>
+    <% end %>
+  <% end %>
+</div>
