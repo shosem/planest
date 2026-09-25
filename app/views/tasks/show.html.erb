@@ -1,5 +1,5 @@
 <div class="h-screen flex flex-col">
-  <header class="pt-8 w-full flex flex-col gap-2">
+  <header class="pt-8 pb-4 w-full flex flex-col gap-3">
     <div class="flex flex-col gap-1 justify-center mx-auto w-2xl">
       <h2 class="font-bold text-2xl flex justify-between items-center">
         タスク名
@@ -30,27 +30,27 @@
     </div>
   </header>
 
-  <div class="divider divider-neutral"></div>
-
   <div class="flex-1 min-h-0 overflow-y-auto pb-8">
-    <section class="flex flex-col gap-1 justify-center mx-auto w-2xl">
-      <h3 class="text-base-content/70">説明</h3>
-      <p>コンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツ</p>
-    </section>
+    <div class="border-t border-neutral">
+      <section class="flex flex-col gap-1 justify-center mx-auto w-2xl py-4">
+        <h3 class="text-base-content/70">説明</h3>
+        <p>コンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツ</p>
+      </section>
+    </div>
 
-    <div class="divider divider-neutral"></div>
+    <div class="border-t border-neutral">
+      <section class="w-2xl mx-auto flex flex-col gap-1 py-4">
+        <h3 class="text-base-content/70">
+          コメント <span class="text-info">(2)</span>
+        </h3>
 
-    <section class="w-2xl mx-auto flex flex-col gap-1">
-      <h3 class="text-base-content/70">
-        コメント <span class="text-info">(2)</span>
-      </h3>
-
-      <div class="flex flex-col gap-4">
-        <% 20.times do |index| %>
-          <%= render "tasks/comment" %>
-        <% end %>
-      </div>
-    </section>
+        <div class="flex flex-col gap-4">
+          <% 20.times do |index| %>
+            <%= render "tasks/comment" %>
+          <% end %>
+        </div>
+      </section>
+    </div>
   </div>
 
   <footer class="px-5 py-4 border-t border-neutral">
