@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_14_084957) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_22_024201) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -36,6 +36,18 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_14_084957) do
     t.check_constraint "is_personal = true AND invite_code IS NULL OR is_personal = false AND invite_code IS NOT NULL", name: "groups_invite_code_presence"
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text "description"
+    t.bigint "group_id", null: false
+    t.integer "status", default: 0, null: false
+    t.string "title", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["group_id"], name: "index_tasks_on_group_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email", default: "", null: false
@@ -49,4 +61,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_14_084957) do
   add_foreign_key "group_members", "groups"
   add_foreign_key "group_members", "users"
   add_foreign_key "groups", "users", column: "owner_id"
+  add_foreign_key "tasks", "groups"
+  add_foreign_key "tasks", "users"
 end

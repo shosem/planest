@@ -15,8 +15,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "pages#home"
 
-  resources :groups, only: %i[ new create show destroy ]
-  resources :tasks, only: %i[ show ]
+  # shallowをtrueにすると、グループの情報が不要なアクションは親が省略される
+  # new なんのグループに作る？ → グループ情報が必要 → groups/:group_id/tasks/:id
+  # edit → 対象のタスクが取得できれば編集できる → グループ情報は不要 /tasks/:id/edit
+  resources :groups, only: %i[ new create show destroy ], shallow: true do
+    resources :tasks, except: :index
+  end
   get "auth-demo", to: "pages#auth_demo", as: :auth_demo
   get "group-detail-demo", to: "pages#group_detail_demo", as: :group_detail_demo
   get "join_demo", to: "pages#join_demo", as: :join_demo
