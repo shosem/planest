@@ -47,30 +47,7 @@
 
       <div class="flex flex-col gap-4">
         <% 20.times do |index| %>
-          <%#
-            後のrand関数の部分は
-            current_user.id === comment.user_idが同じだったら 
-            みたいな判定に置き換えてください。
-          %>
-
-          <div class="chat <%= rand(10) > 7 ? "chat-end" : "chat-start" %>">
-            <div class="chat-image avatar avatar-placeholder">
-              <div class="avatar avatar-placeholder">
-                <div class="bg-neutral text-neutral-content w-10 rounded-full">
-                  <%# 以下にコメント作成者名のイニシャルを入れてください %>
-                  <%= current_user.name.first %>
-                </div>
-              </div>
-            </div>
-
-            <div class="chat-header">
-              コメント作成者名 <time class="text-xs opacity-50">12:45</time>
-            </div>
-
-            <div class="chat-bubble">
-              ここにコメント内容を入れてくださいここにコメント内容を入れてくださいここにコメント内容を入れてください
-            </div>
-          </div>
+          <%= render "tasks/comment" %>
         <% end %>
       </div>
     </section>
