@@ -7,20 +7,25 @@
       <!-- <p class="alert alert-error alert-soft">タスクを作成できませんでした</p> -->
       <%# end %>
 
-      <%#= form_with model: @task, data: { turbo_frame: "_top" }, class: "flex flex-col gap-2" do |f| %>
-      <%#= f.label :name, class: "label" %>
-      <%#= f.text_field :name, autocomplete: "off", placeholder: "タスク", class: "input input-bordered w-full" %>
-      <%#= render "shared/input_error_messages", resource: @task, attr: :name %>
+      <%= form_with model: [@group, @task], data: { turbo_frame: "_top" }, class: "flex flex-col gap-2" do |f| %>
+        <%= f.label :title, class: "label" %>
+        <%= f.text_field :title, autocomplete: "off", placeholder: "タスク", class: "input input-bordered w-full" %>
+        <%= render "shared/input_error_messages", resource: @task, attr: :name %>
 
-      <!-- <div -->
-      <!-- class=" -->
-      <!-- flex justify-end -->
-      <!-- app/views/shared/_form_error_messages.html.erbmt-2 gap-2 -->
-      <!-- " -->
-      <!-- > -->
-      <%#= f.submit "作成する", class: "btn btn-primary" %>
+        <%= f.label :description, class: "label" %>
+        <%= f.text_field :description, autocomplete: "off", placeholder: "説明文", class: "input input-bordered w-full" %>
+        <%= render "shared/input_error_messages", resource: @task, attr: :name %>
 
-      <%= link_to "キャンセル", :back, data: { turbo_frame: "_top" }, class: "btn btn-outline" %>
+        <div
+          class="
+            flex justify-end
+            app/views/shared/_form_error_messages.html.erbmt-2 gap-2
+          "
+        >
+          <%= f.submit "作成する", class: "btn btn-primary" %>
+          <%= link_to "キャンセル", :back, data: { turbo_frame: "_top" }, class: "btn btn-outline" %>
+        </div>
+      <% end %>
     </div>
   </div>
 <% end %>
