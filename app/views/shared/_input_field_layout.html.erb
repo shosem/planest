@@ -3,5 +3,10 @@
 
 <div class="flex flex-col gap-1">
   <%= yield(field_class) %>
-  <%= render "shared/input_error_messages", messages: errors %>
+
+  <% if messages.any? %>
+    <% messages.each do |message| %>
+      <p class="text-sm text-error"><%= message %></p>
+    <% end %>
+  <% end %>
 </div>
