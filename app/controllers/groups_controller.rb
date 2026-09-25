@@ -20,6 +20,8 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find_by(id: params[:id])
+    # ＠groupから、そのグループに紐づいているタスクを取得する
+    @tasks = @group.tasks
 
     # 自分が参加中のグループ以外にアクセスしようとすると弾かれる
     unless current_user.groups.include?(@group)
