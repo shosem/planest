@@ -45,30 +45,34 @@
         コメント <span class="text-info">(2)</span>
       </h3>
 
-      <ul class="flex flex-col gap-4">
+      <div class="flex flex-col gap-4">
         <% 20.times do |index| %>
-          <li>
-            <div class="flex gap-3 items-start">
-              <div class="avatar avatar-placeholder self-start">
-                <div class="bg-neutral text-neutral-content w-8 rounded-full">
-                  <span><%= current_user.name.first %></span>
-                </div>
-              </div>
+          <%#
+            後のrand関数の部分は
+            current_user.id === comment.user_idが同じだったら 
+            みたいな判定に置き換えてください。
+          %>
 
-              <div class="flex flex-col gap-1">
-                <div class="flex gap-2 items-end">
-                  <p class="text-bold"><%= current_user.name %></p>
-                  <p class="text-base-content/70 text-sm">9月6日 10:30</p>
+          <div class="chat <%= rand(10) > 7 ? "chat-end" : "chat-start" %>">
+            <div class="chat-image avatar avatar-placeholder">
+              <div class="avatar avatar-placeholder">
+                <div class="bg-neutral text-neutral-content w-10 rounded-full">
+                  <%# 以下にコメント作成者名のイニシャルを入れてください %>
+                  <%= current_user.name.first %>
                 </div>
-
-                <span class="text-base-content/90">
-                  コメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメント
-                </span>
               </div>
             </div>
-          </li>
+
+            <div class="chat-header">
+              コメント作成者名 <time class="text-xs opacity-50">12:45</time>
+            </div>
+
+            <div class="chat-bubble">
+              ここにコメント内容を入れてくださいここにコメント内容を入れてくださいここにコメント内容を入れてください
+            </div>
+          </div>
         <% end %>
-      </ul>
+      </div>
     </section>
   </div>
 
