@@ -25,9 +25,16 @@
 
       <li>
         <!-- 以下はbutton_toもしくはlink_toに置き換えてください -->
-        <a href="group-delete" class="justify-between">
-          グループを削除する <%= render "shared/icons/trash", class_name: "size-4" %>
-        </a>
+        <!-- グループを削除するボタンをクリックして「本当に削除しますか？」と確認ダイアログが表示 -->
+        <!-- ログインしているユーザーがグループのオーナーである場合のみ表示されるようにする -->
+        <% if group.owner == current_user %>
+          <%= button_to group_path(group), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, form_class: "flex", class: "w-full" do %>
+            <span class="justify-between flex w-full">
+              <p>グループを削除する</p>
+              <%= render "shared/icons/trash", class_name: "size-4" %>
+            </span>
+          <% end %>
+        <% end %>
       </li>
     </ul>
 
