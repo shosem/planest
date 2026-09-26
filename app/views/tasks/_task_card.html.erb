@@ -1,21 +1,17 @@
-<%# locals: (index:) %>
+<%# locals: (task:) %>
 
 <%= link_to "#task-detail", class: "card bg-base-200 w-full border border-neutral", role: "button" do %>
   <div class="card-body gap-3">
     <div class="flex flex-col gap-2">
       <div class="flex items-center justify-between gap-1">
-        <h1 class="card-title min-w-0 flex-1 flex-nowrap gap-2 whitespace-nowrap">
-          タスクタイトルです、ここは@task.titleに置き換えてください。
-          <%= render "tasks/_shared/status_badge", status: :in_progress %>
+        <h1 class="card-title min-w-0 flex-1 flex-nowrap gap-2 whitespace-nowrap justify-between">
+          <%= task.title %>
+          <%= render "tasks/_shared/status_badge", status: task.status %>
         </h1>
       </div>
 
       <p class="text-base-content/70">
-        タスクコンテントです、ここは@task.descriptionに置き換えてください。
-        タスクコンテントです、ここは@task.descriptionに置き換えてください。
-        タスクコンテントです、ここは@task.descriptionに置き換えてください。
-        タスクコンテントです、ここは@task.descriptionに置き換えてください。
-        タスクコンテントです、ここは@task.descriptionに置き換えてください。
+        <%= task.description %>
       </p>
     </div>
 

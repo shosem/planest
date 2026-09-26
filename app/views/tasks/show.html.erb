@@ -1,1 +1,68 @@
-<span>hello task</span>
+<div class="h-screen flex flex-col">
+  <header class="pt-8 pb-4 w-full flex flex-col gap-3">
+    <div class="flex flex-col gap-1 justify-center mx-auto w-2xl">
+      <h2 class="font-bold text-2xl flex justify-between items-center">
+        タスク名
+        <div class="flex gap-2 items-center">
+          <div class="tooltip tooltip-bottom tooltip-black tooltip-secondary">
+            <div class="tooltip-content">
+              タスクを編集
+            </div>
+
+            <%= link_to "#edit", class: "btn btn-circle btn-outline btn-secondary" do %>
+              <%= render "shared/icons/pencil_square" %>
+            <% end %>
+          </div>
+
+          <div class="tooltip tooltip-bottom tooltip-black tooltip-error">
+            <div class="tooltip-content">
+              タスクを削除
+            </div>
+
+            <%= link_to "#edit", class: "btn btn-circle btn-error btn-outline" do %>
+              <%= render "shared/icons/trash" %>
+            <% end %>
+          </div>
+        </div>
+      </h2>
+
+      <%= render "tasks/_shared/status_badge", status: :in_progress %>
+    </div>
+  </header>
+
+  <div class="flex-1 min-h-0 overflow-y-auto pb-8">
+    <div class="border-t border-neutral">
+      <section class="flex flex-col gap-1 justify-center mx-auto w-2xl py-4">
+        <h3 class="text-base-content/70">説明</h3>
+        <p>コンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツコンテンツ</p>
+      </section>
+    </div>
+
+    <div class="border-t border-neutral">
+      <section class="w-2xl mx-auto flex flex-col gap-1 py-4">
+        <h3 class="text-base-content/70">
+          コメント <span class="text-info">(2)</span>
+        </h3>
+
+        <div class="flex flex-col gap-4">
+          <% 20.times do |index| %>
+            <%= render "tasks/comment" %>
+          <% end %>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <footer class="px-5 py-4 border-t border-neutral">
+    <%# form_withのオプションはテキトーに入れたので、随時更新していただけると幸いです。 %>
+    <%= form_with local: true, html: { id: "task-add-edit-form", class: "flex gap-2 items-end" } do |f| %>
+      <%= f.text_area :title,
+          autocomplete: "off",
+          class: "input w-full flex-1 border textarea",
+          placeholder: "コメントを入力" %>
+
+      <%# コメント送信は別途対応として、送信ボタンは暫定で常に非活性 %>
+      <%= f.submit "送信", class: "btn btn-primary", disabled: true %>
+    <% end %>
+  </footer>
+</div>
