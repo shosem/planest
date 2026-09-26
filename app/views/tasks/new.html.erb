@@ -1,34 +1,3 @@
 <%= turbo_frame_tag "modal" do %>
-  <!-- 
-  <div class="fixed inset-0 z-50 bg-black/50 flex items-center justify-center">
-    <div class="flex flex-col gap-2 w-[50%] max-w-md bg-base-100 p-6 rounded-2xl">
-      <h3 class="text-lg font-bold">タスクを作成</h3>
-      -->
-      <%# if @task.errors.any? %>
-      <!-- <p class="alert alert-error alert-soft">タスクを作成できませんでした</p> -->
-      <%# end %>
-
-      <!-- 
-        <%= form_with model: [@group, @task], data: { turbo_frame: "_top" }, class: "flex flex-col gap-2" do |f| %>
-        <%= f.label :title, class: "label" %>
-        <%= f.text_field :title, autocomplete: "off", placeholder: "タスクのタイトル", class: "input input-bordered w-full" %>
-        <%= render "shared/input_error_messages", resource: @task, attr: :name %>
-
-        <%= f.label :description, class: "label" %>
-        <%= f.text_field :description, autocomplete: "off", placeholder: "説明文（任意）", class: "input input-bordered w-full" %>
-        <%= render "shared/input_error_messages", resource: @task, attr: :name %>
-
-        <div
-          class="
-            flex justify-end
-            app/views/shared/_form_error_messages.html.erbmt-2 gap-2
-          "
-        >
-          <%= f.submit "作成する", class: "btn btn-primary" %>
-          <%= link_to "キャンセル", :back, data: { turbo_frame: "_top" }, class: "btn btn-outline" %>
-        </div>
-      <% end %>
-    </div>
-  </div> -->
   <%= render "tasks/_demo/add_edit_modal" %>
 <% end %>
