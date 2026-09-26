@@ -8,3 +8,6 @@ ja:
         email: "メールアドレス"
       group:
         name: "グループ名"
+      task:
+        title: "タイトル"
+        description: "説明文"
