@@ -1,11 +1,5 @@
 <%# locals: (status:) %>
 
-<%#
-  status の enum は、
-    todo: 0, in_progress: 1, done: 2
-  で実装しているので、実装者はキーをそれに合わせること。
-%>
-
 <% status_options = {
     todo: { label: "新規", badge_variant: "badge-info", status_variant: "status-info" },
     in_progress: { label: "進行中", badge_variant: "badge-warning", status_variant: "status-warning" },
