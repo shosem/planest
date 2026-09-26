@@ -1,0 +1,16 @@
+<% mode = local_assigns.fetch(:mode, "add") %>
+<% is_edit_mode = mode.to_s == "edit" %>
+<% action_title = is_edit_mode ? "タスクを編集" : "タスクを追加" %>
+<% action_button_label = is_edit_mode ? "更新する" : "追加する" %>
+
+<dialog id="task_add_edit_modal" class="modal" open>
+  <div class="modal-box flex flex-col gap-2">
+    <h3 class="text-lg font-bold"><%= action_title %></h3>
+
+    <% if error.present? %>
+      <p class="alert alert-error alert-soft">タスクを作成できませんでした</p>
+    <% end %>
+
+    <%= render "tasks/_demo/task_form", mode: 'edit' %>
+  </div>
+</dialog>

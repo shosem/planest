@@ -7,11 +7,12 @@
 %>
 
 <% status_options = {
-    new: { label: "新規", badge_variant: "badge-info", status_variant: "status-info" },
+    todo: { label: "新規", badge_variant: "badge-info", status_variant: "status-info" },
     in_progress: { label: "進行中", badge_variant: "badge-warning", status_variant: "status-warning" },
-    completed: { label: "完了", badge_variant: "badge-primary", status_variant: "status-primary" }
+    done: { label: "完了", badge_variant: "badge-primary", status_variant: "status-primary" }
   }
-  status_option = status_options.fetch(status.to_sym) %>
+  status_key = status.to_s.to_sym
+  status_option = status_options[status_key] || status_options[:todo] %>
 
 <div class="badge badge-soft badge-outline <%= status_option[:badge_variant] %>">
   <div aria-label="Status" class="status <%= status_option[:status_variant] %>"></div>
