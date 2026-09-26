@@ -20,14 +20,13 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find_by(id: params[:id])
-    # ＠groupから、そのグループに紐づいているタスクを取得する
-    @tasks = @group.tasks
-
+    # @groupから、そのグループに紐づいているタスクを取得する
     # 自分が参加中のグループ以外にアクセスしようとすると弾かれる
     unless current_user.groups.include?(@group)
       # ログインユーザーのpersonalグループのidを取得している（本当は404エラー画面へ行きたい）
       redirect_to group_path(current_user.personal_group)
     end
+    @tasks = @group.tasks
   end
 
   def destroy
