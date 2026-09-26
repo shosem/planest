@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_group
+  # before_action :set_group
 
   def new
     @group = Group.find(params[:group_id])
@@ -45,7 +45,7 @@ class TasksController < ApplicationController
     params.require(:task).permit(:title, :description, :status)
   end
   
-  def set_group
-    @group = current_user.groups.find(params[:group_id])
-  end
+  # def set_group
+  #   @group = current_user.groups.find(params[:group_id])
+  # end
 end
