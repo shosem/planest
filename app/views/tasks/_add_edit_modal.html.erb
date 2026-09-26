@@ -1,5 +1,6 @@
-<% mode = local_assigns.fetch(:mode, "add") %>
-<% is_edit_mode = mode.to_s == "edit" %>
+<%# locals: (group:nil, task:) %>
+
+<% is_edit_mode = task.persisted? %>
 <% action_title = is_edit_mode ? "タスクを編集" : "タスクを追加" %>
 <% action_button_label = is_edit_mode ? "更新する" : "追加する" %>
 
@@ -11,6 +12,6 @@
       <p class="alert alert-error alert-soft">タスクを作成できませんでした</p>
     <% end %>
 
-    <%= render "tasks/task_form", mode: 'edit' %>
+    <%= render "tasks/task_form", group: group, task: task %>
   </div>
 </dialog>

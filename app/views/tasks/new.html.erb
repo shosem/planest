@@ -1,3 +1,3 @@
 <%= turbo_frame_tag "modal" do %>
-  <%= render "tasks/add_edit_modal" %>
+  <%= render "tasks/add_edit_modal", group: @group, task: @task %>
 <% end %>
