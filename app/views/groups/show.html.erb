@@ -1,9 +1,9 @@
 <div class="h-screen flex flex-col">
   <header class="pt-8 pb-5 w-2xl mx-auto flex justify-between items-center">
-      <div>
-        <h1 class="font-bold text-4xl"><%= @group.name %></h1>
-        <p class="text-gray-600"><%= @tasks.count %>件のタスク</p>
-      </div>
+    <div>
+      <h1 class="font-bold text-4xl"><%= @group.name %></h1>
+      <p class="text-gray-600"><%= @tasks.count %>件のタスク</p>
+    </div>
 
     <button class="btn btn-primary btn-outline">
       <%= render "shared/icons/plus", class_name: "size-3" %> タスク追加
@@ -13,10 +13,10 @@
   <div class="flex-1 min-h-0 overflow-y-auto pb-8">
     <div class="w-2xl mx-auto">
       <ul class="flex flex-col gap-2">
-  <%# @tasksを１件ずつ取り出して| |の中の変数に入れる %>
+        <%# @tasksを１件ずつ取り出して| |の中の変数に入れる %>
         <% @tasks.each do |task| %>
           <li>
-  <%# パーシャルファイルのapp/views/tasks/_task_card.html.erbをよびだす %>
+            <%# パーシャルファイルのapp/views/tasks/_task_card.html.erbをよびだす %>
             <%= render "tasks/task_card", task: task %>
           </li>
         <% end %>
