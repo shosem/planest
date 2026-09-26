@@ -3,14 +3,14 @@
     <h1>Planest</h1>
   </div>
 
-  <div class="p-3 flex flex-col gap-1.5 border-t border-neutral">
+  <div class="flex flex-col gap-1.5 border-t border-neutral">
     <%= render "groups/group_section", 
         title: "自分のグループ", 
         groups: [ current_user.personal_group ],
         mode: :personal %>
   </div>
 
-  <div class="p-3 flex flex-col flex-1 gap-1.5 border-t border-neutral">
+  <div class="flex flex-col flex-1 gap-1.5 border-t border-neutral overflow-y-auto">
     <%= render "groups/group_section", 
         title: "グループ", 
         groups: current_user.shared_groups,
