@@ -8,3 +8,13 @@ ja:
         email: "メールアドレス"
       group:
         name: "グループ名"
+      task:
+        title: "タイトル"
+        description: "説明"
+        status: "ステータス"
+  enums:
+    task:
+      status:
+        todo: "新規"
+        in_progress: "進行中"
+        done: "完了"

@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_group
+  before_action :set_group, only: %i[ new create ]
 
   def create
   end
@@ -12,17 +12,14 @@ class TasksController < ApplicationController
   end
 
   def show
-    # 画面確認用のダミー表示
-    @task = Struct.new(:title, :content, :status).new(
-      "Hello task",
-      "ここにタスクの詳細が表示されます。\n\nHello task",
-      "in_progress"
-    )
-
-    render :show
+    @task = Task.where(group: current_user.groups).find(params[:id])
   end
 
   def destroy
+    task = current_user.tasks.find(params[:id])
+    group_id = task.group_id
+    task.destroy!
+    redirect_to group_path(group_id), success: "タスクを削除しました"
   end
 
   private
