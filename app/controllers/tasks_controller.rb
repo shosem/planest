@@ -24,6 +24,13 @@ class TasksController < ApplicationController
   end
 
   def update
+    @task = current_user.tasks.find(params[:id])
+
+    if @task.update(task_params)
+      redirect_to task_path(@task), success: "タスクを更新しました"
+    else
+      render :edit, status: :unprocessable_content
+    end
   end
 
   def show
