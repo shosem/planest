@@ -3,7 +3,7 @@
 <% is_edit_mode = task.persisted? %>
 <% action_button_label = is_edit_mode ? "更新する" : "追加する" %>
 
-<%= form_with model: [group, task], local: true, html: { id: "task-add-edit-form", class: "flex flex-col gap-2" } do |f| %>
+<%= form_with model: [group, task], data: { turbo_frame: "_top" }, local: true, html: { id: "task-add-edit-form", class: "flex flex-col gap-2" } do |f| %>
   <%# errors: @task.errors.details[title].full_messages のような形でエラーメッセージ配列を渡してください %>
   <%= render "shared/input_field_layout" do |field_class| %>
     <%= f.label :title, "タイトル", class: "label" %>
