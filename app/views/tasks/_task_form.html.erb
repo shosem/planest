@@ -4,8 +4,7 @@
 <% action_button_label = is_edit_mode ? "更新する" : "追加する" %>
 
 <%= form_with model: [group, task], data: { turbo_frame: "_top" }, local: true, html: { id: "task-add-edit-form", class: "flex flex-col gap-2" } do |f| %>
-  <%# errors: @task.errors.details[title].full_messages のような形でエラーメッセージ配列を渡してください %>
-  <%= render "shared/input_field_layout" do |field_class| %>
+  <%= render "shared/input_field_layout", errors: task.errors.full_messages_for(:title) do |field_class| %>
     <%= f.label :title, "タイトル", class: "label" %>
 
     <%= f.text_field :title,
@@ -15,7 +14,7 @@
   <% end %>
 
   <% if is_edit_mode %>
-    <%= render "shared/input_field_layout" do |field_class| %>
+    <%= render "shared/input_field_layout", errors: task.errors.full_messages_for(:status) do |field_class| %>
       <%= f.label :status, "ステータス", class: "label" %>
 
       <%= f.select :status, {}, {}, class: "select #{field_class}" do %>
@@ -33,7 +32,7 @@
     <% end %>
   <% end %>
 
-  <%= render "shared/input_field_layout", errors: ["error1", "error2"] do |field_class| %>
+  <%= render "shared/input_field_layout", errors: task.errors.full_messages_for(:description) do |field_class| %>
     <%= f.label :description, "詳細", class: "label" %>
 
     <%= f.text_area :description,
