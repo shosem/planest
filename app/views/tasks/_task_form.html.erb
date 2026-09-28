@@ -43,8 +43,6 @@
   <div class="modal-action">
     <%= link_to "キャンセル", :back, data: { turbo_frame: "_top" }, class: "btn btn-outline" %>
 
-    <button class="btn btn-primary" type="submit">
-      <%= is_edit_mode ? "更新する" : "追加する" %>
-    </button>
+    <%= f.submit is_edit_mode ? "更新する" : "追加する", class: "btn btn-primary" %>
   </div>
 <% end %>
