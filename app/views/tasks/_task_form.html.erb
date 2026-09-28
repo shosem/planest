@@ -1,7 +1,6 @@
 <%# locals: (group:, task:) %>
 
 <% is_edit_mode = task.persisted? %>
-<% action_button_label = is_edit_mode ? "更新する" : "追加する" %>
 
 <%= form_with model: [group, task], data: { turbo_frame: "_top" }, local: true, html: { id: "task-add-edit-form", class: "flex flex-col gap-2" } do |f| %>
   <%= render "shared/input_field_layout", errors: task.errors.full_messages_for(:title) do |field_class| %>
@@ -45,7 +44,7 @@
     <%= link_to "キャンセル", :back, data: { turbo_frame: "_top" }, class: "btn btn-outline" %>
 
     <button class="btn btn-primary" type="submit">
-      <%= action_button_label %>
+      <%= is_edit_mode ? "更新する" : "追加する" %>
     </button>
   </div>
 <% end %>
