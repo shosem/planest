@@ -20,7 +20,12 @@
 
       <%= f.select :status, {}, {}, class: "select #{field_class}" do %>
         <% %w[todo in_progress done].each do |status| %>
-          <option value="<%= status %>">
+          <option
+            value="<%= status %>"
+            <% if f.object.status == status %>
+              selected
+            <% end %>
+          >
             <%= render "tasks/_shared/status_badge", status: status %>
           </option>
         <% end %>
