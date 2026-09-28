@@ -27,7 +27,7 @@ class TasksController < ApplicationController
     @task = current_user.tasks.find(params[:id])
 
     if @task.update(task_params)
-      redirect_to group_path(@task.group), success: "タスクを更新しました"
+      redirect_to task_path(@task), success: "タスクを更新しました"
     else
       render :edit, status: :unprocessable_content
     end
