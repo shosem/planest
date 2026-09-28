@@ -1,6 +1,6 @@
 <%# locals: (task:) %>
 
-<%= link_to task_path(task.id), class: "card bg-base-200 w-full border border-neutral", role: "button" do %>
+<%= link_to task_path(task), class: "card bg-base-200 w-full border border-neutral", role: "button" do %>
   <div class="card-body gap-3">
     <div class="flex flex-col gap-2">
       <div class="flex items-center justify-between gap-1">
@@ -11,11 +11,11 @@
           "
         >
           <%= task.title %>
-          <%= render "tasks/_shared/status_badge", status: task.status %>
+          <%= render "tasks/shared/status_badge", status: task.status %>
         </h1>
       </div>
 
-      <p class="text-base-content/70">
+      <p class="text-base-content/70 line-clamp-3">
         <%= task.description %>
       </p>
     </div>

@@ -21,7 +21,7 @@
       <%= f.select :status, {}, {}, class: "select #{field_class}" do %>
         <% %w[todo in_progress done].each do |status| %>
           <option value="<%= status %>">
-            <%= render "tasks/_shared/status_badge", status: status %>
+            <%= render "tasks/shared/status_badge", status: status %>
           </option>
         <% end %>
       <% end %>
