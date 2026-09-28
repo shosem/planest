@@ -4,7 +4,7 @@ class TasksController < ApplicationController
 
   def new
     @group = Group.find(params[:group_id])
-    @task = Task.new #新しいタスクを作成する
+    @task = Task.new # 新しいタスクを作成する
   end
 
   def create
@@ -49,7 +49,7 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:title, :description, :status)
   end
-  
+
   def set_group
     @group = current_user.groups.find(params[:group_id])
   end
