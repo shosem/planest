@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :group_members, dependent: :destroy
   has_many :groups, -> { order(:created_at) }, through: :group_members
   has_many :tasks, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   after_create :generate_personal_group
 
