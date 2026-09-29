@@ -1,0 +1,48 @@
+<%# locals: (group:, task:) %>
+
+<% is_edit_mode = task.persisted? %>
+
+<%= form_with model: [group, task], data: { turbo_frame: "_top" }, class: "flex flex-col gap-2" do |f| %>
+  <%= render "shared/input_field_layout", errors: task.errors.full_messages_for(:title) do |field_class| %>
+    <%= f.label :title, class: "label" %>
+
+    <%= f.text_field :title,
+          autocomplete: "off",
+          class: "input w-full border #{field_class}",
+          placeholder: "タスクのタイトル" %>
+  <% end %>
+
+  <% if is_edit_mode %>
+    <%= render "shared/input_field_layout", errors: task.errors.full_messages_for(:status) do |field_class| %>
+      <%= f.label :status, class: "label" %>
+
+      <%= f.select :status, {}, {}, class: "select #{field_class}" do %>
+        <% %w[todo in_progress done].each do |status| %>
+          <option
+            value="<%= status %>"
+            <% if f.object.status == status %>
+              selected
+            <% end %>
+          >
+            <%= render "tasks/shared/status_badge", status: status %>
+          </option>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= render "shared/input_field_layout", errors: task.errors.full_messages_for(:description) do |field_class| %>
+    <%= f.label :description, class: "label" %>
+
+    <%= f.text_area :description,
+          autocomplete: "off",
+          class: "textarea w-full #{field_class}",
+          placeholder: "詳細や背景情報を入力" %>
+  <% end %>
+
+  <div class="modal-action">
+    <%= link_to "キャンセル", :back, data: { turbo_frame: "_top" }, class: "btn btn-outline" %>
+
+    <%= f.submit is_edit_mode ? "更新する" : "追加する", class: "btn btn-primary" %>
+  </div>
+<% end %>

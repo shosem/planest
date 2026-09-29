@@ -12,7 +12,7 @@
                 タスクを編集
               </div>
 
-              <%= link_to edit_task_path(@task), class: "btn btn-circle btn-outline btn-secondary" do %>
+              <%= link_to edit_task_path(@task), data: {turbo_frame: "modal"}, class: "btn btn-circle btn-outline btn-secondary" do %>
                 <%= render "shared/icons/pencil_square" %>
               <% end %>
             </div>
