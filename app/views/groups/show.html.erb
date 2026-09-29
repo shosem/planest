@@ -15,7 +15,7 @@
         <% @tasks.each do |task| %>
           <li>
             <%# パーシャルファイルのapp/views/tasks/_task_card.html.erbをよびだす %>
-            <%= render "tasks/task_card", task: task %>
+            <%= render "tasks/task_card", task: task, comment_counts: @comment_counts %>
           </li>
         <% end %>
       </ul>

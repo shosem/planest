@@ -27,6 +27,7 @@ class GroupsController < ApplicationController
       redirect_to group_path(current_user.personal_group) and return
     end
     @tasks = @group.tasks
+    @comment_counts = Comment.where(task_id: @tasks.map(&:id)).group(:task_id).count
   end
 
   def destroy
