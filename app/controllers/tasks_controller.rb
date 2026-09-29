@@ -3,12 +3,12 @@ class TasksController < ApplicationController
   before_action :set_group, only: %i[new create]
 
   def new
-    @task = group.tasks.build
+    @task = @group.tasks.build
   end
 
   def create
     @task = @group.tasks.build(task_params)
-    @task.user_id = current_user.id
+    @task.user = current_user
 
     if @task.save
       redirect_to group_path(@group), success: "タスクを作成しました"
