@@ -2,7 +2,7 @@
 
 <% is_edit_mode = task.persisted? %>
 
-<%= form_with model: [group, task], data: { turbo_frame: "_top" }, local: true, html: { id: "task-add-edit-form", class: "flex flex-col gap-2" } do |f| %>
+<%= form_with model: [group, task], data: { turbo_frame: "_top" }, class: "flex flex-col gap-2" do |f| %>
   <%= render "shared/input_field_layout", errors: task.errors.full_messages_for(:title) do |field_class| %>
     <%= f.label :title, "タイトル", class: "label" %>
 
