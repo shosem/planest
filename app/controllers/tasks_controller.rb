@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :set_group, only: %i[new create]
 
   def new
-    @task = Task.new # 新しいタスクを作成する
+    @task = group.tasks.build
   end
 
   def create
