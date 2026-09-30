@@ -36,5 +36,6 @@ module App
       routing_specs: false
       g.factory_bot dir: "spec/factories"
     end
+    config.time_zone = "Asia/Tokyo"
   end
 end
