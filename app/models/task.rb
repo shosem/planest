@@ -1,6 +1,7 @@
 class Task < ApplicationRecord
   belongs_to :user
   belongs_to :group
+  has_many :comments, -> { order(created_at: :asc) }, dependent: :destroy
 
   enum :status, { todo: 0, in_progress: 1, done: 2 }
 

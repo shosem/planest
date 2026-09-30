@@ -65,8 +65,29 @@ users.each_with_index do |user, i|
   end
 end
 
+# 全体共有グループのタスクに日報コメントを入れる。
+# 1タスクにつき「担当者本人が1件」＋「同じグループの他メンバーが3件」の計4件。
+shared.tasks.order(:id).each do |task|
+  others = users.reject { |user| user.id == task.user_id }
+
+  # created_at を明示しないと全件がほぼ同時刻になり、画面で日付の差を確認できない。
+  # Task の has_many :comments は created_at 昇順なので、古い順に並ぶことの確認も兼ねる
+  Comment.find_or_create_by!(task: task, user: task.user) do |comment|
+    comment.content    = "#{task.title}に着手しました。まずは全体の構成から進めます。"
+    comment.created_at = 4.days.ago
+  end
+
+  others.each_with_index do |user, i|
+    Comment.find_or_create_by!(task: task, user: user) do |comment|
+      comment.content    = "#{user.name}です。#{task.title}の進捗を確認しました。"
+      comment.created_at = (3 - i).days.ago
+    end
+  end
+end
+
 puts "ユーザー      : #{User.count}"
 puts "個人グループ  : #{Group.where(is_personal: true).count}"
 puts "通常グループ  : #{Group.where(is_personal: false).count}"
 puts "所属レコード  : #{GroupMember.count}"
 puts "タスク        : #{Task.count}"
+puts "コメント      : #{Comment.count}"
