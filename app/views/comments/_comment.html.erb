@@ -24,4 +24,18 @@
   <div class="chat-bubble whitespace-pre-line">
     <%= comment.content %>
   </div>
+
+  <% if is_my_comment %>
+    <div class="chat-footer">
+      <div class="tooltip tooltip-bottom">
+        <div class="tooltip-content">
+          コメントを削除
+        </div>
+
+        <button class="btn btn-xs btn-ghost">
+          <%= render "shared/icons/trash", class_name: "size-3" %>
+        </button>
+      </div>
+    </div>
+  <% end %>
 </div>
