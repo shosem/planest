@@ -38,6 +38,7 @@
     <div class="border-t border-neutral">
       <section class="flex flex-col gap-1 justify-center mx-auto w-2xl py-4">
         <h3 class="text-base-content/70">説明</h3>
+
         <p class="whitespace-pre-line"><%= @task.description %></p>
       </section>
     </div>
@@ -45,12 +46,14 @@
     <div class="border-t border-neutral">
       <section class="w-2xl mx-auto flex flex-col gap-1 py-4">
         <h3 class="text-base-content/70">
-          コメント <span class="text-info">(2)</span>
+          コメント <span class="text-info">(<%= @comments.size %>)</span>
         </h3>
 
-        <div class="flex flex-col gap-4">
-          <% 20.times do |index| %>
-            <%= render "tasks/comment" %>
+        <%# ここがturbo_streamの宛先 %>
+        <div id="comments" class="flex flex-col gap-4">
+          <% @comments.each_with_index do |comment, i| %>
+            <%# 前のコメントと日付が違うときだけ日付の区切りを出す %>
+            <%= render comment, show_date: i.zero? || @comments[i - 1].created_at.to_date != comment.created_at.to_date %>
           <% end %>
         </div>
       </section>
@@ -59,6 +62,7 @@
 
   <footer class="px-5 py-4 border-t border-neutral">
     <%# form_withのオプションはテキトーに入れたので、随時更新していただけると幸いです。 %>
+    <%# 以下しょせは手をつけてないです。作成機能担当者に任せます！コメントけしといて~~ %>
     <%= form_with local: true, html: { id: "task-add-edit-form", class: "flex gap-2 items-end" } do |f| %>
       <%= f.text_area :title,
           autocomplete: "off",
