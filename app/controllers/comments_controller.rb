@@ -5,4 +5,11 @@ class CommentsController < ApplicationController
   # 判定は、「最後のコメントがない場合」or「最後のコメントが当日じゃない場合」です！
   # byしょせ
   # むずかったらきいてー
+
+  def destroy
+    comment = current_user.comments.find(params[:id])
+    task_id = comment.task_id
+    comment.destroy!
+    redirect_to task_path(task_id), success: "コメントを削除しました"
+  end
 end
