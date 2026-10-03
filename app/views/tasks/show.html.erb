@@ -57,14 +57,12 @@
   </div>
 
   <footer class="px-5 py-4 border-t border-neutral">
-    <%# form_withのオプションはテキトーに入れたので、随時更新していただけると幸いです。 %>
     <%= form_with model: [@task, Comment.new], html: { id: "comment_form", class: "flex gap-2 items-end" } do |f| %>
       <%= f.text_area :content,
           autocomplete: "off",
           class: "input w-full flex-1 border textarea",
           placeholder: "コメントを入力" %>
 
-      <%# コメント送信は別途対応として、送信ボタンは暫定で常に非活性 %>
       <%= f.submit "送信", class: "btn btn-primary" %>
     <% end %>
   </footer>
