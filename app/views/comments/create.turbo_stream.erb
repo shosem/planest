@@ -1,0 +1,4 @@
+<% if @comment.persisted? %>
+  <%= turbo_stream.append "comments", partial: "tasks/comment", locals: { comment: @comment } %>
+  <%= turbo_stream.update "comments_count", "(#{@task.comments.count})" %>
+<% end %>
