@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   # edit → 対象のタスクが取得できれば編集できる → グループ情報は不要 /tasks/:id/edit
   resources :groups, only: %i[ new create show destroy ], shallow: true do
     resources :tasks, except: :index
-    resources :comments, only: [:destroy]
+    resources :comments, only: [ :destroy ]
   end
   get "auth-demo", to: "pages#auth_demo", as: :auth_demo
   get "group-detail-demo", to: "pages#group_detail_demo", as: :group_detail_demo
