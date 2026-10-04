@@ -2,40 +2,42 @@
 
 <% is_my_comment = comment.user == current_user %>
 
-<% if show_date %>
-  <time class="text-center opacity-50 mt-4"><%= comment.created_at.strftime("%Y/%m/%d") %></time>
-<% end %>
-
-<div class="chat <%= is_my_comment ? "chat-end" : "chat-start" %>">
-  <div class="chat-image avatar avatar-placeholder">
-    <div class="avatar avatar-placeholder">
-      <div class="bg-neutral text-neutral-content w-10 rounded-full">
-        <%= comment.user.name.first %>
-      </div>
-    </div>
-  </div>
-
-  <div class="chat-header">
-    <%# 以下にコメント作成者名とコメント作成時間を入れてください。 %>
-    <%= comment.user.name %>
-    <time class="text-xs opacity-50"><%= comment.created_at.strftime("%H:%M") %></time>
-  </div>
-
-  <div class="chat-bubble whitespace-pre-line">
-    <%= comment.content %>
-  </div>
-
-  <% if is_my_comment %>
-    <div class="chat-footer">
-      <div class="tooltip tooltip-bottom">
-        <div class="tooltip-content">
-          コメントを削除
-        </div>
-
-        <%= button_to comment_path(comment), method: :delete, data: { turbo_confirm: "本当に削除しますか？"}, class: "btn btn-xs btn-ghost" do %>
-          <%= render "shared/icons/trash", class_name: "size-3" %>
-        <% end %>
-      </div>
-    </div>
+<div id="<%= dom_id(comment) %>">
+  <% if show_date %>
+    <time class="text-center opacity-50 mt-4"><%= comment.created_at.strftime("%Y/%m/%d") %></time>
   <% end %>
+
+  <div class="chat <%= is_my_comment ? "chat-end" : "chat-start" %>">
+    <div class="chat-image avatar avatar-placeholder">
+      <div class="avatar avatar-placeholder">
+        <div class="bg-neutral text-neutral-content w-10 rounded-full">
+          <%= comment.user.name.first %>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-header">
+      <%# 以下にコメント作成者名とコメント作成時間を入れてください。 %>
+      <%= comment.user.name %>
+      <time class="text-xs opacity-50"><%= comment.created_at.strftime("%H:%M") %></time>
+    </div>
+
+    <div class="chat-bubble whitespace-pre-line">
+      <%= comment.content %>
+    </div>
+
+    <% if is_my_comment %>
+      <div class="chat-footer">
+        <div class="tooltip tooltip-bottom">
+          <div class="tooltip-content">
+            コメントを削除
+          </div>
+
+          <%= button_to comment_path(comment), method: :delete, data: { turbo_confirm: "本当に削除しますか？"}, class: "btn btn-xs btn-ghost" do %>
+            <%= render "shared/icons/trash", class_name: "size-3" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

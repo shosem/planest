@@ -7,9 +7,13 @@ class CommentsController < ApplicationController
   # むずかったらきいてー
 
   def destroy
-    comment = current_user.comments.find(params[:id])
-    task_id = comment.task_id
-    comment.destroy!
-    redirect_to task_path(task_id), success: "コメントを削除しました"
+    @comment = current_user.comments.find(params[:id])
+    task_id = @comment.task_id
+    @comment.destroy!
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to task_path(task_id), success: "コメントを削除しました" }
+    end
   end
 end
