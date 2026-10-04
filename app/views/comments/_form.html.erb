@@ -1,0 +1,8 @@
+<%= form_with model: [task, comment],id: "comments_form", class: "flex gap-2 items-end" do |f| %>
+  <%= f.text_area :content,
+          autocomplete: "off",
+          class: "input w-full flex-1 border textarea",
+          placeholder: "コメントを入力" %>
+
+  <%= f.submit "送信", class: "btn btn-primary" %>
+<% end %>

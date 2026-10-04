@@ -34,6 +34,7 @@ class TasksController < ApplicationController
   def show
     @task = Task.where(group: current_user.groups).find(params[:id])
     @comments = @task.comments.includes(:user)
+    @comment = Comment.new
   end
 
   def destroy

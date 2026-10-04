@@ -2,4 +2,7 @@
 <%# TODO: show_dateに渡す具体的な値は別issueで対応 %>
   <%= turbo_stream.append "comments", partial: "comments/comment", locals: { show_date: false, comment: @comment } %>
   <%= turbo_stream.update "comments_count", "(#{@task.comments.count})" %>
+  <%= turbo_stream.replace "comments_form" do %>
+  <%= render "comments/form", task: @task, comment: Comment.new %>
+  <% end %>
 <% end %>
