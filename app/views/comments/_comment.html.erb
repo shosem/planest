@@ -3,7 +3,7 @@
 <% is_my_comment = comment.user == current_user %>
 
 <% if show_date %>
-  <time class="text-center opacity-50 mt-4"><%= comment.created_at.strftime("%Y/%m/%d") %></time>
+  <div class="divider"><time class="text-center opacity-50"><%= comment.created_at.strftime("%Y/%m/%d") %></time></div>
 <% end %>
 
 <div class="chat <%= is_my_comment ? "chat-end" : "chat-start" %>">
@@ -16,14 +16,11 @@
   </div>
 
   <div class="chat-header">
-    <%# 以下にコメント作成者名とコメント作成時間を入れてください。 %>
     <%= comment.user.name %>
     <time class="text-xs opacity-50"><%= comment.created_at.strftime("%H:%M") %></time>
   </div>
 
-  <div class="chat-bubble whitespace-pre-line">
-    <%= comment.content %>
-  </div>
+  <div class="chat-bubble whitespace-pre-line"><%= comment.content %></div>
 
   <% if is_my_comment %>
     <div class="chat-footer">
