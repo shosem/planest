@@ -1,0 +1,15 @@
+<%# locals: (comments:) %>
+
+<section id="comment-section" class="w-2xl mx-auto flex flex-col gap-1 py-4">
+  <h3 class="text-base-content/70">
+    コメント
+    <span class="text-info">(<%= comments.size %>)</span>
+  </h3>
+
+  <div class="flex flex-col gap-4">
+    <% comments.each_with_index do |comment, i| %>
+      <%# 前のコメントと日付が違うときだけ日付の区切りを出す %>
+      <%= render comment, show_date: i.zero? || comments[i - 1].created_at.to_date != comment.created_at.to_date %>
+    <% end %>
+  </div>
+</section>

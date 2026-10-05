@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
     if @comment.save
       last = @task.comments.where.not(id: @comment.id).order(:created_at).last
       @show_date = last.nil? || last.created_at.to_date != @comment.created_at.to_date
+      @comments = @task.comments
       respond_to do |format| format.turbo_stream
       end
     else

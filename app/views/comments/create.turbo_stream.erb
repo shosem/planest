@@ -1,7 +1,7 @@
-<% if @comment.persisted? %>
-  <%= turbo_stream.append "comments", partial: "comments/comment", locals: { show_date: @show_date, comment: @comment } %>
-  <%= turbo_stream.update "comments_count", "(#{@task.comments.count})" %>
-  <%= turbo_stream.replace "comments_form" do %>
+<%= turbo_stream.replace "comment-section" do %>
+  <%= render "comments/comment_section", comments: @comments %>
+<% end %>
+
+<%= turbo_stream.replace "comments_form" do %>
   <%= render "comments/form", task: @task, comment: Comment.new %>
-  <% end %>
 <% end %>
