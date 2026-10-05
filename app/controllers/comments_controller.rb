@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_task
+  before_action :set_task, only: :create
 
   def create
     @comment = @task.comments.build(comment_params)
