@@ -23,6 +23,7 @@ class CommentsController < ApplicationController
     @task = @comment.task
     task_id = @comment.task_id
     @comment.destroy!
+    @comments = @task.comments.includes(:user).order(:created_at)
 
     respond_to do |format|
       format.turbo_stream
