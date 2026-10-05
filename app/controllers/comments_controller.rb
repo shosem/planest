@@ -1,9 +1,3 @@
-  # createアクション実装者は、turbo_streamで描くパーシャルに、
-  # tasks/show.html.erb:55で渡しているようなshow_date（boolean）も渡してください。
-  # show_dateはコメント表示欄に日付を表示するかどうか、です。
-  # 判定は、「最後のコメントがない場合」or「最後のコメントが当日じゃない場合」です！
-  # byしょせ
-  # むずかったらきいてー
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_task
@@ -13,6 +7,8 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
+      last = @task.comments.where.not(id: @comment.id).order(:created_at).last
+      @show_date = last.nil? || last.created_at.to_date != @comment.created_at.to_date
       respond_to do |format| format.turbo_stream
       end
     else
@@ -20,7 +16,7 @@ class CommentsController < ApplicationController
       end
     end
   end
-
+  
   private
 
   def comment_params
