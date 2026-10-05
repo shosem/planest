@@ -46,7 +46,8 @@
     <div class="border-t border-neutral">
       <section class="w-2xl mx-auto flex flex-col gap-1 py-4">
         <h3 class="text-base-content/70">
-          コメント <span class="text-info">(<%= @comments.size %>)</span>
+          コメント
+          <span id="comments_count" class="text-info">(<%= @comments.size %>)</span>
         </h3>
 
         <%# ここがturbo_streamの宛先 %>

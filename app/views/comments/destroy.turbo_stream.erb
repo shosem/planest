@@ -1,1 +1,2 @@
 <%= turbo_stream.remove "comment_#{@comment.id}" %>
+<%= turbo_stream.update "comments_count", "(#{@task.comments.count})" %>

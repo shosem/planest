@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = current_user.comments.find(params[:id])
+    @task = @comment.task
     task_id = @comment.task_id
     @comment.destroy!
 
