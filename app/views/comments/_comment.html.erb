@@ -29,9 +29,9 @@
           コメントを削除
         </div>
 
-        <button class="btn btn-xs btn-ghost">
+        <%= button_to comment_path(comment), method: :delete, data: { turbo_confirm: "本当に削除しますか？"}, class: "btn btn-xs btn-ghost" do %>
           <%= render "shared/icons/trash", class_name: "size-3" %>
-        </button>
+        <% end %>
       </div>
     </div>
   <% end %>
