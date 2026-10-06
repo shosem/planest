@@ -6,15 +6,10 @@ class CommentsController < ApplicationController
     @comment = @task.comments.build(comment_params)
     @comment.user = current_user
 
-    if @comment.save
-      last = @task.comments.where.not(id: @comment.id).order(:created_at).last
-      @show_date = last.nil? || last.created_at.to_date != @comment.created_at.to_date
-      @comments = @task.comments
-      respond_to do |format| format.turbo_stream
-      end
-    else
-      respond_to do |format| format.turbo_stream { render :create, status: :unprocessable_content }
-      end
+    @comment.save!
+    @comments = @task.comments
+    respond_to do |format|
+      format.turbo_stream
     end
   end
 
@@ -33,7 +28,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content)
+    params.expect(comment: [ :content ])
   end
 
   def set_task

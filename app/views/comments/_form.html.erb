@@ -2,7 +2,8 @@
   <%= f.text_area :content,
           autocomplete: "off",
           class: "input w-full flex-1 border textarea",
-          placeholder: "コメントを入力" %>
+          placeholder: "コメントを入力",
+          required: true %>
 
   <%= f.submit "送信", class: "btn btn-primary" %>
 <% end %>
