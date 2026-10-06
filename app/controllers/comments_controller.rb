@@ -6,9 +6,10 @@ class CommentsController < ApplicationController
     @comment = @task.comments.build(comment_params)
     @comment.user = current_user
 
-    if @comment.save
+    if @comment.save!
       @comments = @task.comments
-      respond_to do |format| format.turbo_stream
+      respond_to do |format|
+        format.turbo_stream
       end
     else
       respond_to do |format|
