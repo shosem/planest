@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content)
+    params.expect(comment:[ :content ])
   end
 
   def set_task
