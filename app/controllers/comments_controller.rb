@@ -11,7 +11,8 @@ class CommentsController < ApplicationController
       respond_to do |format| format.turbo_stream
       end
     else
-      respond_to do |format| format.turbo_stream { render :create, status: :unprocessable_content }
+      respond_to do |format|
+        format.turbo_stream { render :create, status: :unprocessable_content }
       end
     end
   end
