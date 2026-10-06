@@ -6,14 +6,10 @@ class CommentsController < ApplicationController
     @comment = @task.comments.build(comment_params)
     @comment.user = current_user
 
-    if @comment.save!
-      @comments = @task.comments
+    @comment.save!
+    @comments = @task.comments
       respond_to do |format|
         format.turbo_stream
-      end
-    else
-      respond_to do |format|
-        format.turbo_stream { render :create, status: :unprocessable_content }
       end
     end
   end
