@@ -21,13 +21,12 @@ class CommentsController < ApplicationController
   def destroy
     @comment = current_user.comments.find(params[:id])
     @task = @comment.task
-    task_id = @comment.task_id
     @comment.destroy!
     @comments = @task.comments.includes(:user)
 
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_to task_path(task_id), success: "コメントを削除しました" }
+      format.html { redirect_to task_path(@task), success: "コメントを削除しました" }
     end
   end
 
