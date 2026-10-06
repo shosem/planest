@@ -8,9 +8,8 @@ class CommentsController < ApplicationController
 
     @comment.save!
     @comments = @task.comments
-      respond_to do |format|
-        format.turbo_stream
-      end
+    respond_to do |format|
+      format.turbo_stream
     end
   end
 
