@@ -6,7 +6,7 @@
   <div class="divider"><time class="text-center opacity-50"><%= comment.created_at.strftime("%Y/%m/%d") %></time></div>
 <% end %>
 
-<div id="<%= dom_id(comment) %>" class="chat <%= is_my_comment ? "chat-end" : "chat-start" %>">
+<div class="chat <%= is_my_comment ? "chat-end" : "chat-start" %>">
   <div class="chat-image avatar avatar-placeholder">
     <div class="avatar avatar-placeholder">
       <div class="bg-neutral text-neutral-content w-10 rounded-full">
