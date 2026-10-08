@@ -1,0 +1,10 @@
+{
+  "languageServerHerb.formatter.enabled": true,
+	"languageServerHerb.linter.enabled": true,
+  "[erb]": {
+    "editor.defaultFormatter": "marcoroth.herb-lsp"
+  },
+  "[html.erb]": {
+    "editor.defaultFormatter": "marcoroth.herb-lsp"
+  }
+}

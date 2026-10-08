@@ -1,0 +1,33 @@
+<aside class="h-screen w-55 bg-base-200 flex flex-col border-r border-neutral">
+  <div class="p-3">
+    <h1>Planest</h1>
+  </div>
+
+  <div class="flex flex-col gap-1.5 border-t border-neutral">
+    <%= render "groups/group_section", 
+        title: "自分のグループ", 
+        groups: [ current_user.personal_group ],
+        mode: :personal %>
+  </div>
+
+  <div class="flex flex-col flex-1 gap-1.5 border-t border-neutral overflow-y-auto">
+    <%= render "groups/group_section", 
+        title: "グループ", 
+        groups: current_user.shared_groups,
+        mode: :shared %>
+  </div>
+
+  <div class="p-3 flex items-center gap-2.5 border-t border-neutral">
+    <div class="avatar avatar-placeholder">
+      <div class="bg-neutral text-neutral-content w-8 rounded-full">
+        <span><%= current_user.name.first %></span>
+      </div>
+    </div>
+
+    <span class="font-bold text-sm flex-1"><%= current_user.name %></span>
+
+    <%= button_to destroy_user_session_path, method: :delete, class: "btn btn-circle btn-xs text-base-content/60 p-0 text-xs" do %>
+      <%= render "shared/icons/arrow_right_start_on_rectangle" %>
+    <% end %>
+  </div>
+</aside>

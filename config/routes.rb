@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get "pages/home"
+  devise_for :users, controllers: {
+        registrations: "users/registrations"
+      }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -11,5 +13,17 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "pages#home"
+
+  # shallowをtrueにすると、グループの情報が不要なアクションは親が省略される
+  # new なんのグループに作る？ → グループ情報が必要 → groups/:group_id/tasks/:id
+  # edit → 対象のタスクが取得できれば編集できる → グループ情報は不要 /tasks/:id/edit
+  resources :groups, only: %i[ new create show destroy ], shallow: true do
+    resources :tasks, except: :index do
+      resources :comments, only: %i[ create destroy ]
+    end
+  end
+
+  get "join/:invite_code", to: "group_members#new", as: :join
+  post "join/:invite_code", to: "group_members#create"
 end
